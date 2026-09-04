@@ -961,16 +961,53 @@ function toggleFaq(el){
 }
 
 // CTA
-function inscrire(){
-  const email=document.getElementById('email-input').value;
-  if(!email||!email.includes('@')){
-    document.getElementById('email-input').style.borderColor='rgba(239,68,68,0.5)';
+const SUPABASE_URL = 'https://gtygnsrbinrvedicjoeb.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd0eWduc3JiaW5ydmVkaWNqb2ViIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDk4MzU1NzEsImV4cCI6MjAyNTQxMTU3MX0.5RGVMR6_-B2TDpHFxAT_eFEy8X9RQOF3mxNqIKMpbac';
+
+async function inscrire(){
+  const input = document.getElementById('email-input');
+  const email = input.value.trim();
+  const note = document.getElementById('cta-note');
+  const btn = document.querySelector('.cta-btn');
+
+  if(!email || !email.includes('@')){
+    input.style.borderColor='rgba(239,68,68,0.5)';
     return;
   }
-  const note=document.getElementById('cta-note');
-  note.textContent='✓ Inscription enregistrée ! Vous recevrez un email de confirmation.';
-  note.style.color='var(--green)';note.style.fontSize='14px';
-  document.getElementById('email-input').value='';
+
+  btn.textContent = 'Inscription...';
+  btn.disabled = true;
+
+  try {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/waitlist`, {
+      method: 'POST',
+      headers: {
+        'apikey': SUPABASE_KEY,
+        'Authorization': `Bearer ${SUPABASE_KEY}`,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify({ email, created_at: new Date().toISOString(), source: 'landing' })
+    });
+
+    if(res.ok || res.status === 201 || res.status === 409){
+      note.textContent = res.status === 409
+        ? '✓ Vous êtes déjà inscrit — on vous contacte bientôt !'
+        : '✓ Inscription enregistrée ! On vous contacte très vite.';
+      note.style.color = 'var(--green)';
+      note.style.fontSize = '14px';
+      input.value = '';
+      input.style.borderColor = '';
+    } else {
+      throw new Error('Erreur ' + res.status);
+    }
+  } catch(e) {
+    note.textContent = 'Une erreur est survenue, réessayez.';
+    note.style.color = '#ef4444';
+  }
+
+  btn.textContent = 'Rejoindre →';
+  btn.disabled = false;
 }
 </script>
 </body>
