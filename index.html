@@ -1456,7 +1456,9 @@ async function inscrire(){
   btn.textContent = 'Rejoindre \u2192';
   btn.disabled = false;
 }
-</script>function showScreen(name,btn){document.querySelectorAll('.screen-content').forEach(el=>el.classList.add('hidden'));document.querySelectorAll('.screen-tab').forEach(el=>el.classList.remove('active'));document.getElementById('screen-'+name).classList.remove('hidden');btn.classList.add('active');}
+</script>
+<script>
+function showScreen(name,btn){document.querySelectorAll('.screen-content').forEach(el=>el.classList.add('hidden'));document.querySelectorAll('.screen-tab').forEach(el=>el.classList.remove('active'));document.getElementById('screen-'+name).classList.remove('hidden');btn.classList.add('active');}
 </script>
 </body>
 </html>
