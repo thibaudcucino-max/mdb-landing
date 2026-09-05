@@ -27,11 +27,22 @@ body{
   font-family:'Inter',sans-serif;
   color:var(--text);
   background:var(--navy);
-  overflow:hidden auto;
+  overflow-x:hidden;
+  cursor:none;
 }
-html{overflow-x:hidden;overflow-y:auto;}
-@media(hover:none),(pointer:coarse){body{cursor:auto;}.cursor{display:none!important;}}
 
+/* CURSOR */
+.cursor{
+  position:fixed;width:10px;height:10px;border-radius:50%;
+  background:#3ecf8e;pointer-events:none;z-index:99999;
+  top:0;left:0;
+  will-change:transform;
+  transform:translate3d(-50%,-50%,0);
+  transition:width .15s ease,height .15s ease;
+  opacity:1 !important;
+  visibility:visible !important;
+  box-shadow:0 0 6px rgba(62,207,142,.5);
+}
 
 
 /* NAV */
@@ -569,7 +580,7 @@ footer p{font-size:13px;color:rgba(255,255,255,0.2);}
 .screens-tabs{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap;}
 .screen-tab{padding:8px 20px;border-radius:8px;border:1px solid rgba(255,255,255,.12);background:transparent;color:rgba(255,255,255,.55);cursor:pointer;font-size:13px;transition:all .2s;}
 .screen-tab.active{background:rgba(200,168,75,.2);border-color:#C8A84B;color:#C8A84B;}
-.screen-frame{border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.1);box-shadow:0 24px 64px rgba(0,0,0,.4);max-width:100%;}
+.screen-frame{border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.1);box-shadow:0 24px 64px rgba(0,0,0,.4);}
 .browser-bar{background:#1a2433;padding:10px 16px;display:flex;align-items:center;gap:12px;border-bottom:1px solid rgba(255,255,255,.06);}
 .browser-dots{display:flex;gap:6px;}
 .browser-dots span{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.15);}
@@ -607,7 +618,7 @@ footer p{font-size:13px;color:rgba(255,255,255,0.2);}
 
 
 /* ── Mock App Shell ── */
-.mock-app{display:flex;min-height:480px;background:#F7F6F2;font-family:'Inter',sans-serif;overflow:hidden;max-width:100%;}
+.mock-app{display:flex;min-height:480px;background:#F7F6F2;font-family:'Inter',sans-serif;}
 .mock-nav{width:170px;background:#1C2B3A;padding:14px 10px;flex-shrink:0;display:flex;flex-direction:column;gap:2px;}
 .mock-nav-logo{color:#C8A84B;font-size:10px;font-weight:700;letter-spacing:.12em;padding:4px 8px;margin-bottom:12px;}
 .mock-nav-item{padding:6px 8px;border-radius:6px;font-size:10px;color:rgba(255,255,255,.45);cursor:default;}
@@ -723,31 +734,30 @@ footer p{font-size:13px;color:rgba(255,255,255,0.2);}
 .mock-chart-footer{display:flex;gap:16px;flex-wrap:wrap;font-size:8px;color:#6B7B8D;margin-top:8px;border-top:1px solid #F0EEE8;padding-top:6px;}
 
 
-/* Workflow mobile */
+/* === MOBILE === */
 .workflow-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
 @media(max-width:768px){
   .workflow-grid{grid-template-columns:1fr;gap:32px;}
   .s-tag,.s-title,.s-sub{text-align:center;}
   .screens-tabs{justify-content:center;}
   .mock-nav{display:none;}
-  .mock-kpis{grid-template-columns:repeat(2,1fr);}
-  .mock-two-col{grid-template-columns:1fr;}
   .mock-devis-kpis{grid-template-columns:repeat(2,1fr);}
   .mock-dvf-layout{flex-direction:column;}
   .mock-dvf-left{width:100%;}
-  .mock-secu-cols span{min-width:28px;font-size:6px;}
-  .mock-secu-opname{width:80px;}
-  .screen-frame{border-radius:10px;}
-  .screens-tabs{gap:6px;}
+  .mock-two-col{grid-template-columns:1fr;}
   .screen-tab{padding:6px 12px;font-size:11px;}
 }
-
+@media(hover:none),(pointer:coarse){
+  .cursor{display:none!important;}
+  body{cursor:auto;}
+}
+html{overflow-x:hidden;}
 </style>
 </head>
 <body>
 
 <!-- CURSOR -->
-
+<div class="cursor" id="cursor" style="display:none"></div>
 
 
 <!-- NAV -->
@@ -1340,4 +1350,132 @@ footer p{font-size:13px;color:rgba(255,255,255,0.2);}
 </footer>
 
 <script>
+// Custom cursor
+const cursor = document.getElementById('cursor');
+let mx=window.innerWidth/2,my=window.innerHeight/2,cx=window.innerWidth/2,cy=window.innerHeight/2;
+document.addEventListener('mousemove',e=>{
+  if(cursor.style.display==='none') cursor.style.display='block';
+  mx=e.clientX;my=e.clientY;
+});
+(function animCursor(){
+  const dx=mx-cx,dy=my-cy,dist=Math.sqrt(dx*dx+dy*dy);
+  const speed=Math.min(0.35,0.18+dist*0.003);
+  cx+=dx*speed;cy+=dy*speed;
+  cursor.style.transform='translate3d('+(cx-5)+'px,'+(cy-5)+'px,0)';
+  requestAnimationFrame(animCursor);
+})();
+document.querySelectorAll('a,button,.faq-q,.feature-card,.testi,.p-card').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{
+    cursor.style.transform='translate(-50%,-50%) scale(2)';
+  });
+  el.addEventListener('mouseleave',()=>{
+    cursor.style.transform='translate(-50%,-50%) scale(1)';
+  });
+});
+
+// Nav scroll
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50);
+});
+
+// Scroll reveal
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+      // Counter animation
+      const val=e.target.querySelector('[data-target]');
+      if(val && !val.dataset.animated){
+        val.dataset.animated='1';
+        const target=+val.dataset.target;
+        const suffix=val.dataset.suffix||'';
+        let current=0;
+        const step=target/60;
+        const timer=setInterval(()=>{
+          current=Math.min(current+step,target);
+          val.textContent=Math.round(current)+suffix;
+          if(current>=target)clearInterval(timer);
+        },16);
+      }
+      // Money counters in dashboard
+      e.target.querySelectorAll('[data-count]').forEach(el=>{
+        if(el.dataset.animated)return;
+        el.dataset.animated='1';
+        const target=+el.dataset.count;
+        let current=0;
+        const step=target/80;
+        const timer=setInterval(()=>{
+          current=Math.min(current+step,target);
+          el.textContent=Math.round(current).toLocaleString('fr-FR')+' €';
+          if(current>=target)clearInterval(timer);
+        },12);
+      });
+    }
+  });
+},{threshold:0.15});
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>observer.observe(el));
+
+// FAQ
+function toggleFaq(el){
+  const item=el.parentElement;
+  const isOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+  if(!isOpen)item.classList.add('open');
+}
+
+// CTA
+async function inscrire(){
+  const input = document.getElementById('email-input');
+  const email = input.value.trim();
+  const note = document.getElementById('cta-note');
+  const btn = document.querySelector('.cta-btn');
+
+  if(!email || !email.includes('@')){
+    input.style.borderColor='rgba(239,68,68,0.5)';
+    note.textContent = 'Entrez une adresse email valide.';
+    note.style.color = '#ef4444';
+    note.style.fontSize = '13px';
+    return;
+  }
+
+  btn.textContent = 'Inscription...';
+  btn.disabled = true;
+  input.style.borderColor = '';
+
+  try {
+    const res = await fetch('/api/waitlist', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email })
+    });
+    const json = await res.json().catch(() => ({}));
+    if(res.ok && json.ok) {
+      note.textContent = '\u2713 Inscription enregistrée ! On vous contacte très vite.';
+      note.style.color = 'var(--green)';
+      note.style.fontSize = '14px';
+      input.value = '';
+    } else {
+      throw new Error(json.error || 'Erreur serveur');
+    }
+  } catch(e) {
+    note.textContent = 'Erreur : ' + e.message + '. Écrivez-nous à thibaudcucino@gmail.com';
+    note.style.color = '#ef4444';
+    note.style.fontSize = '13px';
+  }
+
+  btn.textContent = 'Rejoindre \u2192';
+  btn.disabled = false;
+}
+</script>
+
+
+    <a href="#inscription" class="sticky-btn">Accès anticipé gratuit →</a>
+  </div>
+</div>
+<script>
+window.addEventListener('scroll',()=>{const s=document.getElementById('sticky-cta');if(window.scrollY>400)s.classList.add('visible');else s.classList.remove('visible');});
+function showScreen(name,btn){document.querySelectorAll('.screen-content').forEach(el=>el.classList.add('hidden'));document.querySelectorAll('.screen-tab').forEach(el=>el.classList.remove('active'));document.getElementById('screen-'+name).classList.remove('hidden');btn.classList.add('active');}
+</script>
+</body>
+</html>
  
