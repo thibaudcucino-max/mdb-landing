@@ -34,11 +34,14 @@ body{
 /* CURSOR */
 .cursor{
   position:fixed;width:10px;height:10px;border-radius:50%;
-  background:var(--gold);pointer-events:none;z-index:9999;
+  background:#3ecf8e;pointer-events:none;z-index:99999;
   top:0;left:0;
   will-change:transform;
   transform:translate3d(-50%,-50%,0);
   transition:width .15s ease,height .15s ease;
+  opacity:1 !important;
+  visibility:visible !important;
+  box-shadow:0 0 6px rgba(62,207,142,.5);
 }
 
 
@@ -898,7 +901,7 @@ footer p{font-size:13px;color:rgba(255,255,255,0.2);}
 <script>
 // Custom cursor
 const cursor = document.getElementById('cursor');
-let mx=0,my=0,cx=0,cy=0;
+let mx=window.innerWidth/2,my=window.innerHeight/2,cx=window.innerWidth/2,cy=window.innerHeight/2;
 document.addEventListener('mousemove',e=>{
   mx=e.clientX;my=e.clientY;
 });
