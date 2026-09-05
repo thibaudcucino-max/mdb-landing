@@ -737,6 +737,23 @@ footer p{font-size:13px;color:rgba(255,255,255,0.2);}
 .mock-bar-lbl{font-size:7px;color:#8B9BAD;margin-top:2px;white-space:nowrap;}
 .mock-chart-footer{display:flex;gap:16px;flex-wrap:wrap;font-size:8px;color:#6B7B8D;margin-top:8px;border-top:1px solid #F0EEE8;padding-top:6px;}
 
+
+/* Workflow mobile */
+.workflow-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+@media(max-width:768px){
+  .workflow-grid{grid-template-columns:1fr;gap:32px;}
+  .mock-nav{display:none;}
+  .mock-kpis{grid-template-columns:repeat(2,1fr);}
+  .mock-two-col{grid-template-columns:1fr;}
+  .mock-devis-kpis{grid-template-columns:repeat(2,1fr);}
+  .mock-dvf-layout{flex-direction:column;}
+  .mock-dvf-left{width:100%;}
+  .mock-secu-cols span{min-width:28px;font-size:6px;}
+  .mock-secu-opname{width:80px;}
+  .screen-frame{border-radius:10px;}
+  .screens-tabs{gap:6px;}
+  .screen-tab{padding:6px 12px;font-size:11px;}
+}
 </style>
 </head>
 <body>
@@ -907,7 +924,7 @@ footer p{font-size:13px;color:rgba(255,255,255,0.2);}
 
 <!-- WORKFLOW -->
 <section class="dark-section s" id="workflow">
-  <div class="s-inner" style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;">
+  <div class="s-inner workflow-grid">
     <div>
       <div class="s-tag dark reveal">Comment ça marche</div>
       <h2 class="s-title dark reveal">Opérationnel<br>en 10 minutes.</h2>
