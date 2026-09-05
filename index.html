@@ -33,10 +33,12 @@ body{
 
 /* CURSOR */
 .cursor{
-  position:fixed;width:12px;height:12px;border-radius:50%;
+  position:fixed;width:10px;height:10px;border-radius:50%;
   background:var(--gold);pointer-events:none;z-index:9999;
-  transition:transform 0.1s;mix-blend-mode:difference;
-  transform:translate(-50%,-50%);
+  top:0;left:0;
+  will-change:transform;
+  transform:translate3d(-50%,-50%,0);
+  transition:width .15s ease,height .15s ease,opacity .15s ease;
 }
 
 
@@ -901,8 +903,8 @@ document.addEventListener('mousemove',e=>{
   mx=e.clientX;my=e.clientY;
 });
 (function animCursor(){
-  cx+=(mx-cx)*0.10;cy+=(my-cy)*0.10;
-  cursor.style.left=cx+'px';cursor.style.top=cy+'px';
+  cx+=(mx-cx)*0.08;cy+=(my-cy)*0.08;
+  cursor.style.transform='translate3d('+(cx-5)+'px,'+(cy-5)+'px,0)';
   requestAnimationFrame(animCursor);
 })();
 document.querySelectorAll('a,button,.faq-q,.feature-card,.testi,.p-card').forEach(el=>{
