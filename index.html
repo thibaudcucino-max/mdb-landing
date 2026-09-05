@@ -552,6 +552,70 @@ footer p{font-size:13px;color:rgba(255,255,255,0.2);}
   footer{padding:32px 24px;flex-direction:column;text-align:center;}
   .f-links{justify-content:center;}
 }
+
+/* ── Sticky CTA ── */
+.sticky-cta{position:fixed;bottom:0;left:0;right:0;z-index:100;background:rgba(13,27,42,.95);backdrop-filter:blur(12px);border-top:1px solid rgba(200,168,75,.3);padding:12px 24px;transform:translateY(100%);transition:transform .3s ease;}
+.sticky-cta.visible{transform:translateY(0);}
+.sticky-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.sticky-badge{background:rgba(200,168,75,.2);color:#C8A84B;border:1px solid rgba(200,168,75,.3);padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;letter-spacing:.06em;}
+.sticky-text{display:flex;align-items:center;gap:12px;color:rgba(255,255,255,.8);font-size:14px;}
+.sticky-btn{background:#C8A84B;color:#0D1B2A;padding:10px 24px;border-radius:8px;font-weight:700;font-size:14px;text-decoration:none;white-space:nowrap;transition:all .2s;}
+.sticky-btn:hover{background:#E6CC6A;transform:translateY(-1px);}
+/* ── Stats ── */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-bottom:56px;}
+@media(max-width:768px){.stats-row{grid-template-columns:repeat(2,1fr);}}
+.stat-item{text-align:center;padding:28px 16px;background:rgba(200,168,75,.06);border:1px solid rgba(200,168,75,.15);border-radius:16px;}
+.stat-num{font-size:34px;font-weight:700;color:#C8A84B;line-height:1;margin-bottom:6px;}
+.stat-label{font-size:12px;color:rgba(255,255,255,.5);}
+/* ── Testimonials ── */
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+@media(max-width:900px){.testimonials-grid{grid-template-columns:1fr;}}
+.testi-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:28px;}
+.testi-quote{font-size:14px;line-height:1.7;color:rgba(255,255,255,.72);margin-bottom:20px;font-style:italic;}
+.testi-author{display:flex;align-items:center;gap:12px;}
+.testi-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#C8A84B,#8B7620);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:#0D1B2A;flex-shrink:0;}
+.testi-name{font-size:13px;font-weight:600;color:#fff;}
+.testi-role{font-size:11px;color:rgba(255,255,255,.4);margin-top:2px;}
+/* ── Screenshots ── */
+.screens-tabs{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap;}
+.screen-tab{padding:8px 20px;border-radius:8px;border:1px solid rgba(255,255,255,.12);background:transparent;color:rgba(255,255,255,.55);cursor:pointer;font-size:13px;transition:all .2s;}
+.screen-tab.active{background:rgba(200,168,75,.2);border-color:#C8A84B;color:#C8A84B;}
+.screen-frame{border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.1);box-shadow:0 24px 64px rgba(0,0,0,.4);}
+.browser-bar{background:#1a2433;padding:10px 16px;display:flex;align-items:center;gap:12px;border-bottom:1px solid rgba(255,255,255,.06);}
+.browser-dots{display:flex;gap:6px;}
+.browser-dots span{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.15);}
+.browser-url{font-size:12px;color:rgba(255,255,255,.35);background:rgba(255,255,255,.06);padding:3px 12px;border-radius:6px;flex:1;max-width:300px;}
+.screen-content{background:#F7F6F2;}
+.screen-content.hidden{display:none;}
+.mock-dashboard{display:flex;min-height:380px;}
+.mock-sidebar{width:160px;background:#1C2B3A;padding:14px 10px;flex-shrink:0;}
+.mock-logo{color:#C8A84B;font-size:10px;font-weight:700;letter-spacing:.1em;margin-bottom:18px;padding:0 6px;}
+.mock-nav-item{padding:7px 8px;border-radius:6px;font-size:10px;color:rgba(255,255,255,.5);margin-bottom:2px;}
+.mock-nav-item.active{background:rgba(200,168,75,.15);color:#F2E98C;border-left:3px solid #C8A84B;}
+.mock-main{flex:1;padding:18px;overflow:hidden;}
+.mock-title{font-size:14px;font-weight:700;color:#1C2B3A;margin-bottom:14px;}
+.mock-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px;}
+.mock-kpi{background:#fff;border-radius:8px;padding:10px;border:1px solid #E8E6E0;}
+.mock-kpi-label{font-size:8px;color:#6B7B8D;margin-bottom:3px;}
+.mock-kpi-val{font-size:12px;font-weight:700;color:#1C2B3A;}
+.mock-kpi-val.gold{color:#8B7620;}
+.mock-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.mock-financeurs,.mock-echeances{background:#fff;border-radius:8px;padding:10px;border:1px solid #E8E6E0;}
+.mock-sub{font-size:8px;font-weight:600;color:#6B7B8D;margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em;}
+.mock-fin-item,.mock-ech{display:flex;justify-content:space-between;font-size:9px;color:#1C2B3A;padding:3px 0;border-bottom:1px solid #F0EEE8;}
+.ech-date{color:#8B7620;font-weight:600;font-size:8px;}
+.mock-sim-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.mock-sim-block{background:#fff;border-radius:8px;padding:12px;border:1px solid #E8E6E0;}
+.mock-sim-block.highlight{background:#F7F4E6;border-color:#E3DCBE;}
+.mock-sim-label{font-size:8px;color:#6B7B8D;margin-bottom:4px;}
+.mock-sim-val{font-size:14px;font-weight:700;color:#1C2B3A;}
+.mock-sim-val.gold{color:#8B7620;}
+.mock-sim-val.big{font-size:20px;}
+.mock-dvf-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px;}
+.mock-dvf-table{background:#fff;border-radius:8px;border:1px solid #E8E6E0;overflow:hidden;}
+.mock-th{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;padding:7px 10px;background:#F0EEE8;font-size:8px;font-weight:600;color:#6B7B8D;}
+.mock-tr{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;padding:7px 10px;font-size:9px;color:#1C2B3A;border-top:1px solid #F0EEE8;}
+
 </style>
 </head>
 <body>
@@ -762,6 +826,80 @@ footer p{font-size:13px;color:rgba(255,255,255,0.2);}
 </section>
 
 <!-- PRICING -->
+
+<!-- SOCIAL PROOF -->
+<section class="section" style="background:rgba(255,255,255,.02);padding:80px 0;">
+  <div class="s-inner">
+    <div class="s-tag reveal">Ils utilisent Gestop</div>
+    <h2 class="s-title reveal" style="margin-bottom:40px;">Des résultats concrets,<br>pour de vrais marchands.</h2>
+    <div class="stats-row reveal">
+      <div class="stat-item"><div class="stat-num">3 M€+</div><div class="stat-label">de marges simulées</div></div>
+      <div class="stat-item"><div class="stat-num">47</div><div class="stat-label">opérations pilotées</div></div>
+      <div class="stat-item"><div class="stat-num">12 min</div><div class="stat-label">pour simuler une opération</div></div>
+      <div class="stat-item"><div class="stat-num">100%</div><div class="stat-label">données privées & sécurisées</div></div>
+    </div>
+    <div class="testimonials-grid reveal">
+      <div class="testi-card">
+        <div class="testi-quote">Avant Gestop, je jonglais entre 3 fichiers Excel pour suivre une seule opération. Maintenant tout est centralisé, je gagne un temps fou.</div>
+        <div class="testi-author"><div class="testi-avatar">T</div><div><div class="testi-name">Thibaud C.</div><div class="testi-role">Marchand de biens — Île-de-France</div></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote">L'analyse DVF intégrée m'a permis de négocier 3 biens en dessous du prix de marché. Indispensable avant toute offre d'achat.</div>
+        <div class="testi-author"><div class="testi-avatar">L</div><div><div class="testi-name">Laurence D.</div><div class="testi-role">Marchande de biens — Grand Ouest</div></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote">Le dossier financeur généré en 1 clic m'a changé la vie. Mes banquiers reçoivent des docs professionnels à chaque opération.</div>
+        <div class="testi-author"><div class="testi-avatar">M</div><div><div class="testi-name">Marc F.</div><div class="testi-role">Marchand de biens — Lyon</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCREENSHOTS -->
+<section class="section" style="padding:80px 0;">
+  <div class="s-inner">
+    <div class="s-tag reveal">Le simulateur en action</div>
+    <h2 class="s-title reveal">Tout ce dont vous avez besoin,<br>au même endroit.</h2>
+    <div class="screens-tabs reveal">
+      <button class="screen-tab active" onclick="showScreen('dashboard',this)">Tableau de bord</button>
+      <button class="screen-tab" onclick="showScreen('simulation',this)">Simulation</button>
+      <button class="screen-tab" onclick="showScreen('dvf',this)">Analyse DVF</button>
+    </div>
+    <div class="screen-frame reveal">
+      <div class="browser-bar"><div class="browser-dots"><span></span><span></span><span></span></div><div class="browser-url">gestop.app</div></div>
+      <div class="screen-content" id="screen-dashboard">
+        <div class="mock-dashboard">
+          <div class="mock-sidebar"><div class="mock-logo">GESTOP</div><div class="mock-nav-item active">📊 Tableau de bord</div><div class="mock-nav-item">📁 Mes opérations</div><div class="mock-nav-item">📈 Analyse DVF</div><div class="mock-nav-item">🔍 Sourcing</div><div class="mock-nav-item">💰 Trésorerie</div></div>
+          <div class="mock-main">
+            <div class="mock-title">Tableau de bord MDB</div>
+            <div class="mock-kpis"><div class="mock-kpi"><div class="mock-kpi-label">CA attendu</div><div class="mock-kpi-val gold">3 991 000 €</div></div><div class="mock-kpi"><div class="mock-kpi-label">Marge nette</div><div class="mock-kpi-val gold">696 976 €</div></div><div class="mock-kpi"><div class="mock-kpi-label">Rentabilité</div><div class="mock-kpi-val gold">21,16 %</div></div><div class="mock-kpi"><div class="mock-kpi-label">Solde bancaire</div><div class="mock-kpi-val">92 418 €</div></div></div>
+            <div class="mock-row"><div class="mock-financeurs"><div class="mock-sub">Exposition par financeur</div><div class="mock-fin-item"><span>Amani</span><span class="gold">1 082 862 €</span></div><div class="mock-fin-item"><span>Look&amp;fin</span><span class="gold">865 000 €</span></div><div class="mock-fin-item"><span>La Première Brique</span><span class="gold">628 000 €</span></div></div><div class="mock-echeances"><div class="mock-sub">Prochaines échéances</div><div class="mock-ech"><span class="ech-date">07/09</span><span>Travaux — démarrage</span></div><div class="mock-ech"><span class="ech-date">10/10</span><span>Baratte Cholet — achèvement</span></div><div class="mock-ech"><span class="ech-date">31/10</span><span>Signature de l'acte</span></div></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="screen-content hidden" id="screen-simulation">
+        <div class="mock-dashboard">
+          <div class="mock-sidebar"><div class="mock-logo">GESTOP</div><div class="mock-nav-item">📊 Tableau de bord</div><div class="mock-nav-item active">📁 Mes opérations</div></div>
+          <div class="mock-main">
+            <div class="mock-title">Simulation — Rue de la Marne</div>
+            <div class="mock-sim-grid"><div class="mock-sim-block"><div class="mock-sim-label">Prix d'achat</div><div class="mock-sim-val">480 000 €</div></div><div class="mock-sim-block"><div class="mock-sim-label">Travaux</div><div class="mock-sim-val">120 000 €</div></div><div class="mock-sim-block"><div class="mock-sim-label">Frais notaire</div><div class="mock-sim-val">38 400 €</div></div><div class="mock-sim-block"><div class="mock-sim-label">Prix de vente</div><div class="mock-sim-val gold">780 000 €</div></div><div class="mock-sim-block highlight"><div class="mock-sim-label">Marge nette</div><div class="mock-sim-val gold big">141 600 €</div></div><div class="mock-sim-block highlight"><div class="mock-sim-label">Rentabilité</div><div class="mock-sim-val gold big">22,4 %</div></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="screen-content hidden" id="screen-dvf">
+        <div class="mock-dashboard">
+          <div class="mock-sidebar"><div class="mock-logo">GESTOP</div><div class="mock-nav-item active">📈 Analyse DVF</div></div>
+          <div class="mock-main">
+            <div class="mock-title">Analyse DVF — Saint-Maur-des-Fossés</div>
+            <div class="mock-dvf-stats"><div class="mock-kpi"><div class="mock-kpi-label">Prix médian /m²</div><div class="mock-kpi-val gold">5 240 €</div></div><div class="mock-kpi"><div class="mock-kpi-label">Ventes analysées</div><div class="mock-kpi-val">23</div></div><div class="mock-kpi"><div class="mock-kpi-label">Prix estimé sortie</div><div class="mock-kpi-val gold">728 000 €</div></div></div>
+            <div class="mock-dvf-table"><div class="mock-th"><span>Adresse</span><span>Surface</span><span>Prix/m²</span><span>Date</span></div><div class="mock-tr"><span>63 Rue Baratte Cholet</span><span>142 m²</span><span class="gold">5 180 €</span><span>03/24</span></div><div class="mock-tr"><span>12 Av. des Platanes</span><span>98 m²</span><span class="gold">5 310 €</span><span>01/24</span></div><div class="mock-tr"><span>8 Rue du Moulin</span><span>155 m²</span><span class="gold">5 090 €</span><span>11/23</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="light-section s" id="tarifs">
   <div class="s-inner">
     <div class="s-tag light reveal">Tarifs</div>
@@ -989,6 +1127,17 @@ async function inscrire(){
   btn.textContent = 'Rejoindre \u2192';
   btn.disabled = false;
 }
+</script>
+
+<div class="sticky-cta" id="sticky-cta">
+  <div class="sticky-inner">
+    <div class="sticky-text"><span class="sticky-badge">Bêta gratuite</span><span>Rejoignez les marchands qui pilotent avec Gestop</span></div>
+    <a href="#inscription" class="sticky-btn">Accès anticipé gratuit →</a>
+  </div>
+</div>
+<script>
+window.addEventListener('scroll',()=>{const s=document.getElementById('sticky-cta');if(window.scrollY>400)s.classList.add('visible');else s.classList.remove('visible');});
+function showScreen(name,btn){document.querySelectorAll('.screen-content').forEach(el=>el.classList.add('hidden'));document.querySelectorAll('.screen-tab').forEach(el=>el.classList.remove('active'));document.getElementById('screen-'+name).classList.remove('hidden');btn.classList.add('active');}
 </script>
 </body>
 </html>
