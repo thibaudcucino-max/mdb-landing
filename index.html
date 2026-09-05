@@ -761,7 +761,7 @@ footer p{font-size:13px;color:rgba(255,255,255,0.2);}
 <body>
 
 <!-- CURSOR -->
-<div class="cursor" id="cursor"></div>
+<div class="cursor" id="cursor" style="display:none"></div>
 
 
 <!-- NAV -->
@@ -1354,10 +1354,12 @@ footer p{font-size:13px;color:rgba(255,255,255,0.2);}
 </footer>
 
 <script>
-// Custom cursor
+// Custom cursor — desktop uniquement
 const cursor = document.getElementById('cursor');
 let mx=window.innerWidth/2,my=window.innerHeight/2,cx=window.innerWidth/2,cy=window.innerHeight/2;
+let cursorVisible = false;
 document.addEventListener('mousemove',e=>{
+  if(!cursorVisible){ cursor.style.display='block'; cursorVisible=true; }
   mx=e.clientX;my=e.clientY;
 });
 (function animCursor(){
