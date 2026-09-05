@@ -901,7 +901,7 @@ document.addEventListener('mousemove',e=>{
   mx=e.clientX;my=e.clientY;
 });
 (function animCursor(){
-  cx+=(mx-cx)*0.18;cy+=(my-cy)*0.18;
+  cx+=(mx-cx)*0.10;cy+=(my-cy)*0.10;
   cursor.style.left=cx+'px';cursor.style.top=cy+'px';
   requestAnimationFrame(animCursor);
 })();
@@ -984,26 +984,24 @@ async function inscrire(){
   input.style.borderColor = '';
 
   try {
-    const res = await fetch('/api/contact-vitrine', {
+    const res = await fetch('/api/waitlist', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, lot: 'waitlist', message: 'Inscription liste d\'attente landing' })
+      body: JSON.stringify({ email })
     });
-    if(res.ok) {
+    const json = await res.json().catch(() => ({}));
+    if(res.ok && json.ok) {
       note.textContent = '\u2713 Inscription enregistrée ! On vous contacte très vite.';
-      note.style.color = '#3ecf8e';
+      note.style.color = 'var(--green)';
       note.style.fontSize = '14px';
       input.value = '';
     } else {
-      throw new Error('Erreur serveur');
+      throw new Error(json.error || 'Erreur serveur');
     }
   } catch(e) {
-    // Fallback : mailto
-    window.location.href = 'mailto:thibaudcucino@gmail.com?subject=Inscription liste attente MDB&body=Email: ' + encodeURIComponent(email);
-    note.textContent = '\u2713 Redirection email — on vous recontacte !';
-    note.style.color = '#3ecf8e';
-    note.style.fontSize = '14px';
-    input.value = '';
+    note.textContent = 'Erreur : ' + e.message + '. Écrivez-nous à thibaudcucino@gmail.com';
+    note.style.color = '#ef4444';
+    note.style.fontSize = '13px';
   }
 
   btn.textContent = 'Rejoindre \u2192';
