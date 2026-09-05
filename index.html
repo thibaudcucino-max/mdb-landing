@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Gestop — Le logiciel de gestion des marchands de biens</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
@@ -30,8 +30,11 @@ body{
   overflow-x:hidden;
   cursor:none;
 }
+html{overflow-x:hidden;}
+@media(hover:none),(pointer:coarse){body{cursor:auto;}.cursor{display:none!important;}}
 
-/* CURSOR */
+/* CURSOR — desktop uniquement */
+@media (pointer:fine) {
 .cursor{
   position:fixed;width:10px;height:10px;border-radius:50%;
   background:#3ecf8e;pointer-events:none;z-index:99999;
@@ -42,6 +45,7 @@ body{
   opacity:1 !important;
   visibility:visible !important;
   box-shadow:0 0 6px rgba(62,207,142,.5);
+}
 }
 
 
@@ -580,7 +584,7 @@ footer p{font-size:13px;color:rgba(255,255,255,0.2);}
 .screens-tabs{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap;}
 .screen-tab{padding:8px 20px;border-radius:8px;border:1px solid rgba(255,255,255,.12);background:transparent;color:rgba(255,255,255,.55);cursor:pointer;font-size:13px;transition:all .2s;}
 .screen-tab.active{background:rgba(200,168,75,.2);border-color:#C8A84B;color:#C8A84B;}
-.screen-frame{border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.1);box-shadow:0 24px 64px rgba(0,0,0,.4);}
+.screen-frame{border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.1);box-shadow:0 24px 64px rgba(0,0,0,.4);max-width:100%;}
 .browser-bar{background:#1a2433;padding:10px 16px;display:flex;align-items:center;gap:12px;border-bottom:1px solid rgba(255,255,255,.06);}
 .browser-dots{display:flex;gap:6px;}
 .browser-dots span{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.15);}
@@ -618,7 +622,7 @@ footer p{font-size:13px;color:rgba(255,255,255,0.2);}
 
 
 /* ── Mock App Shell ── */
-.mock-app{display:flex;min-height:480px;background:#F7F6F2;font-family:'Inter',sans-serif;}
+.mock-app{display:flex;min-height:480px;background:#F7F6F2;font-family:'Inter',sans-serif;overflow:hidden;max-width:100%;}
 .mock-nav{width:170px;background:#1C2B3A;padding:14px 10px;flex-shrink:0;display:flex;flex-direction:column;gap:2px;}
 .mock-nav-logo{color:#C8A84B;font-size:10px;font-weight:700;letter-spacing:.12em;padding:4px 8px;margin-bottom:12px;}
 .mock-nav-item{padding:6px 8px;border-radius:6px;font-size:10px;color:rgba(255,255,255,.45);cursor:default;}
