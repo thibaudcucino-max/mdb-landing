@@ -9,11 +9,11 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
-  --navy:#0F1E35;
-  --navy2:#1a2f4a;
-  --gold:#C8A84B;
+  --navy:#0D1B2A;
+  --navy2:#162030;
+  --gold:#3ecf8e;
   --gold2:#E8D08B;
-  --gold3:rgba(200,168,75,0.15);
+  --gold3:rgba(62,207,142,0.15);
   --off:#FAFAF7;
   --grey:#F0EFE9;
   --line:#E6E4DC;
@@ -85,8 +85,8 @@ nav.scrolled{
 .hero-grid{
   position:absolute;inset:0;
   background-image:
-    linear-gradient(rgba(200,168,75,0.05) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(200,168,75,0.05) 1px,transparent 1px);
+    linear-gradient(rgba(62,207,142,0.05) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(62,207,142,0.05) 1px,transparent 1px);
   background-size:80px 80px;
   animation:gridMove 20s linear infinite;
 }
@@ -102,7 +102,7 @@ nav.scrolled{
 }
 .orb1{
   width:600px;height:600px;
-  background:rgba(200,168,75,0.08);
+  background:rgba(62,207,142,0.08);
   top:-200px;right:-100px;
   animation:float1 8s ease-in-out infinite;
 }
@@ -114,7 +114,7 @@ nav.scrolled{
 }
 .orb3{
   width:300px;height:300px;
-  background:rgba(200,168,75,0.05);
+  background:rgba(62,207,142,0.05);
   top:40%;left:30%;
   animation:float3 12s ease-in-out infinite;
 }
@@ -126,8 +126,8 @@ nav.scrolled{
 
 .hero-badge{
   display:inline-flex;align-items:center;gap:8px;
-  border:1px solid rgba(200,168,75,0.3);
-  background:rgba(200,168,75,0.07);
+  border:1px solid rgba(62,207,142,0.3);
+  background:rgba(62,207,142,0.07);
   color:var(--gold);font-size:12px;font-weight:600;
   padding:8px 18px;border-radius:100px;margin-bottom:36px;
   letter-spacing:0.04em;
@@ -173,7 +173,7 @@ nav.scrolled{
   padding:18px 40px;border-radius:12px;
   font-size:16px;font-weight:800;text-decoration:none;
   transition:all 0.25s;
-  box-shadow:0 0 40px rgba(200,168,75,0.3);
+  box-shadow:0 0 40px rgba(62,207,142,0.3);
   position:relative;overflow:hidden;
 }
 .btn-hero::before{
@@ -182,7 +182,7 @@ nav.scrolled{
   transform:translateX(-100%);transition:transform 0.5s;
 }
 .btn-hero:hover::before{transform:translateX(100%);}
-.btn-hero:hover{transform:translateY(-3px);box-shadow:0 8px 40px rgba(200,168,75,0.45);}
+.btn-hero:hover{transform:translateY(-3px);box-shadow:0 8px 40px rgba(62,207,142,0.45);}
 .btn-ghost{
   color:rgba(255,255,255,0.7);font-size:15px;font-weight:500;
   text-decoration:none;display:flex;align-items:center;gap:6px;
@@ -204,7 +204,7 @@ nav.scrolled{
 }
 .dashboard-glow{
   position:absolute;inset:-40px;
-  background:radial-gradient(ellipse at center,rgba(200,168,75,0.15) 0%,transparent 70%);
+  background:radial-gradient(ellipse at center,rgba(62,207,142,0.15) 0%,transparent 70%);
   pointer-events:none;
 }
 .dashboard-frame{
@@ -241,7 +241,7 @@ nav.scrolled{
 .df-op-info{font-size:10px;color:rgba(255,255,255,0.35);}
 .df-op-right{display:flex;align-items:center;gap:12px;}
 .df-badge{font-size:9px;font-weight:700;padding:4px 10px;border-radius:20px;letter-spacing:0.04em;}
-.db-gold{background:rgba(200,168,75,0.15);color:var(--gold);}
+.db-gold{background:rgba(62,207,142,0.15);color:var(--gold);}
 .db-green{background:rgba(34,197,94,0.15);color:var(--green);}
 .db-blue{background:rgba(59,130,246,0.15);color:#60a5fa;}
 .df-pct{font-size:12px;font-weight:800;color:var(--green);}
@@ -299,7 +299,7 @@ nav.scrolled{
 }
 .stat-item::before{
   content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse at center bottom,rgba(200,168,75,0.05),transparent);
+  background:radial-gradient(ellipse at center bottom,rgba(62,207,142,0.05),transparent);
   opacity:0;transition:opacity 0.4s;
 }
 .stat-item:hover::before{opacity:1;}
@@ -349,12 +349,12 @@ nav.scrolled{
   background:var(--navy);color:var(--gold);
   font-size:18px;font-weight:900;
   display:flex;align-items:center;justify-content:center;
-  border:2px solid rgba(200,168,75,0.3);
+  border:2px solid rgba(62,207,142,0.3);
   flex-shrink:0;z-index:1;position:relative;
 }
 .wf-line{
   width:2px;flex:1;margin-top:8px;
-  background:linear-gradient(to bottom,rgba(200,168,75,0.3),rgba(200,168,75,0));
+  background:linear-gradient(to bottom,rgba(62,207,142,0.3),rgba(62,207,142,0));
 }
 .wf-last .wf-line{display:none;}
 .wf-right{padding:0 0 56px 28px;}
@@ -376,14 +376,14 @@ nav.scrolled{
 }
 .p-card.light:hover{box-shadow:0 20px 60px rgba(30,58,95,0.12);}
 .p-card.dark-card{
-  background:var(--navy);border:1px solid rgba(200,168,75,0.3);
+  background:var(--navy);border:1px solid rgba(62,207,142,0.3);
   position:relative;overflow:hidden;
 }
 .p-card.dark-card::before{
   content:'';position:absolute;top:0;left:0;right:0;height:2px;
   background:linear-gradient(90deg,transparent,var(--gold),transparent);
 }
-.p-card.dark-card:hover{box-shadow:0 20px 60px rgba(200,168,75,0.2);}
+.p-card.dark-card:hover{box-shadow:0 20px 60px rgba(62,207,142,0.2);}
 .p-label{
   font-size:11px;font-weight:700;letter-spacing:0.12em;
   text-transform:uppercase;margin-bottom:20px;
@@ -419,7 +419,7 @@ nav.scrolled{
 .p-btn-outline:hover{border-color:var(--navy);background:var(--navy);color:#fff;}
 .p-btn-gold{
   background:var(--gold);color:var(--navy);
-  box-shadow:0 4px 20px rgba(200,168,75,0.35);
+  box-shadow:0 4px 20px rgba(62,207,142,0.35);
 }
 .p-btn-gold:hover{background:var(--gold2);transform:translateY(-2px);}
 
@@ -441,7 +441,7 @@ nav.scrolled{
   font-family:'Inter',sans-serif;
   transition:border-color 0.2s;
 }
-.cta-input:focus{border-color:rgba(200,168,75,0.5);}
+.cta-input:focus{border-color:rgba(62,207,142,0.5);}
 .cta-input::placeholder{color:rgba(255,255,255,0.3);}
 .cta-btn{
   background:var(--gold);color:var(--navy);border:none;
@@ -471,7 +471,7 @@ nav.scrolled{
 .testi-av{
   width:42px;height:42px;border-radius:50%;
   background:linear-gradient(135deg,var(--navy2),var(--navy));
-  border:2px solid rgba(200,168,75,0.3);
+  border:2px solid rgba(62,207,142,0.3);
   display:flex;align-items:center;justify-content:center;
   color:var(--gold);font-size:16px;font-weight:800;
 }
@@ -597,9 +597,9 @@ footer p{font-size:13px;color:rgba(255,255,255,0.2);}
         <div class="df-title">Tableau de bord — Portefeuille MDB</div>
       </div>
       <div class="df-body">
-        <div class="df-kpi"><div class="df-kpi-label">CHIFFRE D'AFFAIRES</div><div class="df-kpi-value g" data-count="3991000">0 €</div><div class="df-kpi-sub">5 opérations actives</div></div>
-        <div class="df-kpi"><div class="df-kpi-label">MARGE NETTE</div><div class="df-kpi-value gr" data-count="696976">0 €</div><div class="df-kpi-sub">+21,2% de rentabilité</div></div>
-        <div class="df-kpi"><div class="df-kpi-label">SOLDE BANCAIRE</div><div class="df-kpi-value" style="color:#60a5fa" data-count="92418">0 €</div><div class="df-kpi-sub">Tous comptes confondus</div></div>
+        <div class="df-kpi"><div class="df-kpi-label">CHIFFRE D'AFFAIRES</div><div class="df-kpi-value g" data-count="3991000">3 991 000 €</div><div class="df-kpi-sub">5 opérations actives</div></div>
+        <div class="df-kpi"><div class="df-kpi-label">MARGE NETTE</div><div class="df-kpi-value gr" data-count="696976">696 976 €</div><div class="df-kpi-sub">+21,2% de rentabilité</div></div>
+        <div class="df-kpi"><div class="df-kpi-label">SOLDE BANCAIRE</div><div class="df-kpi-value" style="color:#60a5fa" data-count="92418">92 418 €</div><div class="df-kpi-sub">Tous comptes confondus</div></div>
       </div>
       <div class="df-ops">
         <div class="df-op">
@@ -653,7 +653,7 @@ footer p{font-size:13px;color:rgba(255,255,255,0.2);}
         <div class="stat-label">Modules intégrés</div>
       </div>
       <div class="stat-item">
-        <div class="stat-value" data-target="100" data-suffix="%">0%</div>
+        <div class="stat-value" data-target="100" data-suffix="%">100%</div>
         <div class="stat-label">Données DVF françaises</div>
       </div>
       <div class="stat-item">
@@ -869,7 +869,7 @@ footer p{font-size:13px;color:rgba(255,255,255,0.2);}
 </section>
 
 <!-- CTA FINAL -->
-<section class="dark-section s" id="inscription" style="background:radial-gradient(ellipse at center,rgba(200,168,75,0.08) 0%,var(--navy) 70%);">
+<section class="dark-section s" id="inscription" style="background:radial-gradient(ellipse at center,rgba(62,207,142,0.08) 0%,var(--navy) 70%);">
   <div class="cta-wrap">
     <div class="s-tag dark reveal" style="justify-content:center;">Accès anticipé</div>
     <h2 class="reveal">Rejoignez les premiers marchands<br>sur la liste d'attente.</h2>
@@ -896,11 +896,15 @@ footer p{font-size:13px;color:rgba(255,255,255,0.2);}
 <script>
 // Custom cursor
 const cursor = document.getElementById('cursor');
-let mx=0,my=0;
+let mx=0,my=0,cx=0,cy=0;
 document.addEventListener('mousemove',e=>{
   mx=e.clientX;my=e.clientY;
-  cursor.style.left=mx+'px';cursor.style.top=my+'px';
 });
+(function animCursor(){
+  cx+=(mx-cx)*0.18;cy+=(my-cy)*0.18;
+  cursor.style.left=cx+'px';cursor.style.top=cy+'px';
+  requestAnimationFrame(animCursor);
+})();
 document.querySelectorAll('a,button,.faq-q,.feature-card,.testi,.p-card').forEach(el=>{
   el.addEventListener('mouseenter',()=>{
     cursor.style.transform='translate(-50%,-50%) scale(2)';
@@ -961,9 +965,6 @@ function toggleFaq(el){
 }
 
 // CTA
-const SUPABASE_URL = 'https://gtygnsrbinrvedicjoeb.supabase.co';
-const SUPABASE_KEY = 'sb_publishable_awIJN5fb_ruincsehp-bjQ__nw7ds9Y';
-
 async function inscrire(){
   const input = document.getElementById('email-input');
   const email = input.value.trim();
@@ -972,42 +973,40 @@ async function inscrire(){
 
   if(!email || !email.includes('@')){
     input.style.borderColor='rgba(239,68,68,0.5)';
+    note.textContent = 'Entrez une adresse email valide.';
+    note.style.color = '#ef4444';
+    note.style.fontSize = '13px';
     return;
   }
 
   btn.textContent = 'Inscription...';
   btn.disabled = true;
+  input.style.borderColor = '';
 
-  const res = await fetch(`${SUPABASE_URL}/rest/v1/waitlist`, {
-    method: 'POST',
-    headers: {
-      'apikey': SUPABASE_KEY,
-      'Authorization': `Bearer ${SUPABASE_KEY}`,
-      'Content-Type': 'application/json',
-      'Prefer': 'return=minimal'
-    },
-    body: JSON.stringify({ email, source: 'landing' })
-  });
-
-  const body = await res.text();
-  console.log('Status:', res.status, 'Body:', body);
-
-  if(res.status === 201 || res.status === 200) {
-    note.textContent = '✓ Inscription enregistrée ! On vous contacte très vite.';
-    note.style.color = 'var(--green)';
+  try {
+    const res = await fetch('/api/contact-vitrine', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, lot: 'waitlist', message: 'Inscription liste d\'attente landing' })
+    });
+    if(res.ok) {
+      note.textContent = '\u2713 Inscription enregistrée ! On vous contacte très vite.';
+      note.style.color = '#3ecf8e';
+      note.style.fontSize = '14px';
+      input.value = '';
+    } else {
+      throw new Error('Erreur serveur');
+    }
+  } catch(e) {
+    // Fallback : mailto
+    window.location.href = 'mailto:thibaudcucino@gmail.com?subject=Inscription liste attente MDB&body=Email: ' + encodeURIComponent(email);
+    note.textContent = '\u2713 Redirection email — on vous recontacte !';
+    note.style.color = '#3ecf8e';
     note.style.fontSize = '14px';
     input.value = '';
-  } else if(res.status === 409) {
-    note.textContent = '✓ Vous êtes déjà inscrit !';
-    note.style.color = 'var(--green)';
-    note.style.fontSize = '14px';
-  } else {
-    note.textContent = 'Erreur ' + res.status + ' — ' + body;
-    note.style.color = '#ef4444';
-    note.style.fontSize = '13px';
   }
 
-  btn.textContent = 'Rejoindre →';
+  btn.textContent = 'Rejoindre \u2192';
   btn.disabled = false;
 }
 </script>
