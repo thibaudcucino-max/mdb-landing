@@ -200,7 +200,7 @@ async function checkout(plan) {
   btn.disabled = true;
   
   try {
-    const res = await fetch('https://mdb-simulateur-tau.vercel.app/api/create-checkout', {
+    const res = await fetch('/api/create-checkout', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ priceId, plan, billing })
