@@ -774,8 +774,8 @@ html{overflow-x:hidden;}
 
 <!-- NAV -->
 <nav id="nav">
-  <div class="nav-logo">Gestop<span class="dot"></span></div>
-  <div class="nav-links">
+  <div class="nav-logo" onclick="window.scrollTo({top:0,behavior:'smooth'})" style="cursor:pointer;">Gestop<span class="dot"></span></div>
+  <div class="nav-links" id="nav-links" style="transition:opacity .25s,transform .25s;">
     <a href="#fonctionnalites">Fonctionnalités</a>
     <a href="#workflow">Comment ça marche</a>
     <a href="#tarifs">Tarifs</a>
@@ -1351,19 +1351,19 @@ async function inscrire(){
 </script>
 <script>
 function showScreen(name,btn){document.querySelectorAll('.screen-content').forEach(el=>el.classList.add('hidden'));document.querySelectorAll('.screen-tab').forEach(el=>el.classList.remove('active'));document.getElementById('screen-'+name).classList.remove('hidden');btn.classList.add('active');}
-// Nav actions disparaissent au scroll
+// Nav links disparaissent au scroll, actions restent
 (function(){
-  const actions = document.getElementById('nav-actions');
-  if(!actions) return;
+  const links = document.getElementById('nav-links');
+  if(!links) return;
   window.addEventListener('scroll', function(){
     if(window.scrollY > 80){
-      actions.style.opacity='0';
-      actions.style.pointerEvents='none';
-      actions.style.transform='translateY(-6px)';
+      links.style.opacity='0';
+      links.style.pointerEvents='none';
+      links.style.transform='translateY(-6px)';
     } else {
-      actions.style.opacity='1';
-      actions.style.pointerEvents='auto';
-      actions.style.transform='translateY(0)';
+      links.style.opacity='1';
+      links.style.pointerEvents='auto';
+      links.style.transform='translateY(0)';
     }
   }, {passive:true});
 })();
