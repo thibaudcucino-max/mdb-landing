@@ -38,7 +38,7 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify({
         from: 'Gestop Contact <contact@gestop.fr>',
-        to: ['thibaudcucinotta@demereenfilsmdb.fr'],
+        to: ['contact@gestop.fr'],
         reply_to: email,
         subject: '[Gestop] ' + (sujets[sujet] || sujet) + ' - ' + nom,
         html,
