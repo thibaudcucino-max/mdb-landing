@@ -52,6 +52,10 @@ body{
   overflow-x:hidden;
   cursor:none;
 }
+@media(hover:none),(pointer:coarse){
+  body{cursor:auto;}
+  .cursor{display:none!important;}
+}
 
 /* CURSOR */
 .cursor{
@@ -578,6 +582,11 @@ footer p{font-size:13px;color:rgba(255,255,255,0.2);}
 /* ── Sticky CTA ── */
 /* ── Stats ── */
 .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-bottom:56px;}
+@media(hover:none),(pointer:coarse){
+  .reveal,.reveal-left,.reveal-right{
+    opacity:1!important;transform:none!important;transition:none!important;
+  }
+}
 @media(max-width:768px){.stats-row{grid-template-columns:repeat(2,1fr);}}
 .stat-item{text-align:center;padding:28px 16px;background:rgba(200,168,75,.06);border:1px solid rgba(200,168,75,.15);border-radius:16px;}
 .stat-num{font-size:34px;font-weight:700;color:#C8A84B;line-height:1;margin-bottom:6px;}
@@ -1276,6 +1285,7 @@ html{overflow-x:hidden;}
 // Custom cursor
 const cursor = document.getElementById('cursor');
 let mx=window.innerWidth/2,my=window.innerHeight/2,cx=window.innerWidth/2,cy=window.innerHeight/2;
+if(window.matchMedia('(hover:hover)').matches){
 document.addEventListener('mousemove',e=>{
   if(cursor.style.display==='none') cursor.style.display='block';
   mx=e.clientX;my=e.clientY;
@@ -1295,6 +1305,7 @@ document.querySelectorAll('a,button,.faq-q,.feature-card,.testi,.p-card').forEac
     cursor.style.transform='translate(-50%,-50%) scale(1)';
   });
 });
+}
 
 // Nav scroll
 
