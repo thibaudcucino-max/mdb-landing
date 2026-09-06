@@ -816,13 +816,18 @@ html{overflow-x:hidden;}
 <meta name="twitter:title" content="Gestop — Le logiciel de gestion pour marchands de biens">
 <meta name="twitter:description" content="Gérez vos opérations immobilières, simulations financières et trésorerie en un seul outil. Conçu pour les marchands de biens.">
 <link rel="canonical" href="https://gestop.fr/">
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-QVW3JD4DDJ"></script>
+<!-- Google Analytics (conditionnel au consentement) -->
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-QVW3JD4DDJ');
+  if (localStorage.getItem('gestop_cookie_consent') === 'accepted') {
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-QVW3JD4DDJ';
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-QVW3JD4DDJ');
+  }
 </script>
 </head>
 <body>
@@ -1424,6 +1429,51 @@ function showScreen(name,btn){document.querySelectorAll('.screen-content').forEa
     }
   }, {passive:true});
 })();
+</script>
+
+<!-- BANDEAU COOKIES -->
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;
+  background:#fff;border-top:1px solid #E8E6E0;padding:16px 24px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  box-shadow:0 -4px 24px rgba(0,0,0,0.08);flex-wrap:wrap;">
+  <p style="margin:0;font-size:13px;color:#3D5166;max-width:700px;line-height:1.5;">
+    🍪 Nous utilisons des cookies pour analyser le trafic (Google Analytics). 
+    Aucune donnée personnelle n'est vendue. 
+    <a href="/privacy.html" style="color:#0E7490;text-decoration:underline;">En savoir plus</a>
+  </p>
+  <div style="display:flex;gap:8px;flex-shrink:0;">
+    <button onclick="refuserCookies()" style="padding:8px 16px;border-radius:8px;border:1px solid #D6D3CC;
+      font-size:13px;font-weight:600;cursor:pointer;background:#fff;color:#3D5166;">
+      Refuser
+    </button>
+    <button onclick="accepterCookies()" style="padding:8px 16px;border-radius:8px;border:none;
+      font-size:13px;font-weight:600;cursor:pointer;background:#1C2B3A;color:#fff;">
+      Accepter
+    </button>
+  </div>
+</div>
+
+<script>
+(function() {
+  var consent = localStorage.getItem('gestop_cookie_consent');
+  if (!consent) {
+    document.getElementById('cookie-banner').style.display = 'flex';
+  }
+  if (consent === 'refused') {
+    window['ga-disable-G-QVW3JD4DDJ'] = true;
+  }
+})();
+
+function accepterCookies() {
+  localStorage.setItem('gestop_cookie_consent', 'accepted');
+  document.getElementById('cookie-banner').style.display = 'none';
+}
+
+function refuserCookies() {
+  localStorage.setItem('gestop_cookie_consent', 'refused');
+  window['ga-disable-G-QVW3JD4DDJ'] = true;
+  document.getElementById('cookie-banner').style.display = 'none';
+}
 </script>
 </body>
 </html>
