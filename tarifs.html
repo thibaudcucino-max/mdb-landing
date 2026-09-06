@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tarifs — Gestop</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0D1B2A;color:#fff;line-height:1.6;}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 40px;display:flex;align-items:center;justify-content:space-between;background:rgba(13,27,42,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.08);}
+  .nav-logo{font-size:18px;font-weight:800;color:#fff;text-decoration:none;letter-spacing:-.02em;cursor:pointer;}
+  .nav-logo span{color:#3ecf8e;}
+  .nav-back{font-size:13px;color:rgba(255,255,255,.6);text-decoration:none;}
+  .nav-back:hover{color:#fff;}
+  main{max-width:1000px;margin:0 auto;padding:100px 24px 80px;}
+  .hero{text-align:center;margin-bottom:60px;}
+  .hero h1{font-size:40px;font-weight:800;letter-spacing:-.02em;margin-bottom:12px;}
+  .hero p{font-size:16px;color:rgba(255,255,255,.6);max-width:480px;margin:0 auto 24px;}
+  .toggle{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:48px;}
+  .toggle-btn{padding:8px 20px;border-radius:20px;font-size:13px;font-weight:600;cursor:pointer;border:1px solid rgba(255,255,255,.2);background:transparent;color:rgba(255,255,255,.6);transition:all .2s;}
+  .toggle-btn.active{background:#3ecf8e;color:#0D1B2A;border-color:#3ecf8e;}
+  .badge{background:rgba(62,207,142,.15);color:#3ecf8e;border:1px solid rgba(62,207,142,.3);border-radius:20px;padding:4px 10px;font-size:11px;font-weight:700;}
+  .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .plan{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:32px;transition:border-color .2s;}
+  .plan:hover{border-color:rgba(62,207,142,.3);}
+  .plan.popular{background:rgba(62,207,142,.05);border-color:rgba(62,207,142,.3);position:relative;}
+  .plan-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#3ecf8e;color:#0D1B2A;font-size:11px;font-weight:800;padding:4px 14px;border-radius:20px;white-space:nowrap;}
+  .plan-name{font-size:14px;font-weight:700;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px;}
+  .plan-price{font-size:42px;font-weight:800;margin-bottom:4px;letter-spacing:-.02em;}
+  .plan-price span{font-size:18px;font-weight:400;color:rgba(255,255,255,.5);}
+  .plan-annual{font-size:12px;color:rgba(255,255,255,.4);margin-bottom:8px;min-height:18px;}
+  .plan-desc{font-size:13px;color:rgba(255,255,255,.5);margin-bottom:24px;}
+  .plan-trial{font-size:12px;color:#3ecf8e;margin-bottom:20px;font-weight:600;}
+  .plan-btn{width:100%;padding:14px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;border:none;transition:all .2s;margin-bottom:24px;}
+  .plan-btn-primary{background:#3ecf8e;color:#0D1B2A;}
+  .plan-btn-primary:hover{background:#5DF0A5;}
+  .plan-btn-secondary{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.15);}
+  .plan-btn-secondary:hover{background:rgba(255,255,255,.12);}
+  .plan-btn-outline{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.2);}
+  .plan-btn-outline:hover{border-color:rgba(255,255,255,.4);}
+  .plan-features{list-style:none;}
+  .plan-features li{font-size:13px;color:rgba(255,255,255,.7);padding:6px 0;display:flex;align-items:flex-start;gap:8px;border-bottom:1px solid rgba(255,255,255,.06);}
+  .plan-features li:last-child{border:none;}
+  .plan-features li::before{content:'✓';color:#3ecf8e;font-weight:700;flex-shrink:0;}
+  .faq{margin-top:64px;}
+  .faq h2{font-size:24px;font-weight:700;text-align:center;margin-bottom:32px;}
+  .faq-item{border-bottom:1px solid rgba(255,255,255,.08);padding:20px 0;cursor:pointer;}
+  .faq-q{font-size:15px;font-weight:600;display:flex;justify-content:space-between;align-items:center;}
+  .faq-a{font-size:13px;color:rgba(255,255,255,.6);margin-top:12px;line-height:1.7;display:none;}
+  .faq-item.open .faq-a{display:block;}
+  .faq-item.open .faq-icon{transform:rotate(45deg);}
+  .faq-icon{transition:transform .2s;font-size:20px;color:rgba(255,255,255,.4);}
+  footer{text-align:center;padding:32px;font-size:12px;color:rgba(255,255,255,.3);}
+  @media(max-width:768px){.plans{grid-template-columns:1fr;}.hero h1{font-size:28px;}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="nav-logo">Gestop<span>.</span></a>
+  <a href="/" class="nav-back">← Accueil</a>
+</nav>
+
+<main>
+  <div class="hero">
+    <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(62,207,142,.1);border:1px solid rgba(62,207,142,.2);border-radius:20px;padding:6px 16px;font-size:12px;color:#3ecf8e;font-weight:600;margin-bottom:20px;">
+      ● Bêta ouverte — accès limité
+    </div>
+    <h1>Simple, transparent,<br>sans surprise.</h1>
+    <p>3 jours d'essai gratuit sur tous les plans. Pas de carte bancaire requise pour démarrer.</p>
+    
+    <!-- Toggle mensuel/annuel -->
+    <div class="toggle">
+      <button class="toggle-btn active" id="btn-monthly" onclick="setBilling('monthly')">Mensuel</button>
+      <button class="toggle-btn" id="btn-annual" onclick="setBilling('annual')">Annuel <span class="badge">−20%</span></button>
+    </div>
+  </div>
+
+  <div class="plans">
+    <!-- Solo -->
+    <div class="plan">
+      <div class="plan-name">Solo</div>
+      <div class="plan-price" id="price-solo">49<span>€/mois</span></div>
+      <div class="plan-annual" id="annual-solo"></div>
+      <div class="plan-desc">Pour les marchands de biens qui gèrent seuls leurs opérations.</div>
+      <div class="plan-trial">✓ 3 jours gratuits, sans CB</div>
+      <button class="plan-btn plan-btn-secondary" onclick="checkout('solo')">Commencer l'essai →</button>
+      <ul class="plan-features">
+        <li>Tableau de bord portefeuille</li>
+        <li>Opérations illimitées</li>
+        <li>Simulations financières</li>
+        <li>Analyse DVF</li>
+        <li>Trésorerie prévisionnelle</li>
+        <li>Calendrier & échéances</li>
+        <li>Sécurisation globale</li>
+        <li>Export PDF financeur</li>
+        <li>1 utilisateur</li>
+      </ul>
+    </div>
+
+    <!-- Pro -->
+    <div class="plan popular">
+      <div class="plan-badge">Le plus populaire</div>
+      <div class="plan-name">Pro</div>
+      <div class="plan-price" id="price-pro">99<span>€/mois</span></div>
+      <div class="plan-annual" id="annual-pro"></div>
+      <div class="plan-desc">Pour les marchands actifs avec plusieurs opérations simultanées.</div>
+      <div class="plan-trial">✓ 3 jours gratuits, sans CB</div>
+      <button class="plan-btn plan-btn-primary" onclick="checkout('pro')">Commencer l'essai →</button>
+      <ul class="plan-features">
+        <li>Tout du plan Solo</li>
+        <li>Sourcing (import CSV portails)</li>
+        <li>Devis travaux (import PDF)</li>
+        <li>Comparateur de simulations</li>
+        <li>Gestion locative</li>
+        <li>Rapports DVF avancés</li>
+        <li>Commercialisation & vitrine</li>
+        <li>Jusqu'à 3 utilisateurs</li>
+        <li>Support prioritaire</li>
+      </ul>
+    </div>
+
+    <!-- Cabinet -->
+    <div class="plan">
+      <div class="plan-name">Cabinet</div>
+      <div class="plan-price" id="price-cabinet">249<span>€/mois</span></div>
+      <div class="plan-annual" id="annual-cabinet"></div>
+      <div class="plan-desc">Pour les cabinets et équipes avec volume élevé d'opérations.</div>
+      <div class="plan-trial">✓ 3 jours gratuits, sans CB</div>
+      <button class="plan-btn plan-btn-outline" onclick="checkout('cabinet')">Commencer l'essai →</button>
+      <ul class="plan-features">
+        <li>Tout du plan Pro</li>
+        <li>Utilisateurs illimités</li>
+        <li>Multi-sociétés</li>
+        <li>White label (votre marque)</li>
+        <li>Accès API</li>
+        <li>Formation incluse (2h)</li>
+        <li>Gestionnaire de compte dédié</li>
+        <li>SLA & support téléphonique</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq">
+    <h2>Questions fréquentes</h2>
+    <div class="faq-item" onclick="toggle(this)">
+      <div class="faq-q">L'essai gratuit est-il vraiment sans carte bancaire ? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Oui. Vous accédez à Gestop pendant 3 jours sans renseigner aucune information de paiement. À la fin de l'essai, si vous souhaitez continuer, vous choisissez votre plan et renseignez votre carte.</div>
+    </div>
+    <div class="faq-item" onclick="toggle(this)">
+      <div class="faq-q">Puis-je changer de plan ? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Oui, à tout moment. Si vous passez à un plan supérieur, la différence est calculée au prorata. Si vous réduisez, le nouveau tarif s'applique à la prochaine période.</div>
+    </div>
+    <div class="faq-item" onclick="toggle(this)">
+      <div class="faq-q">Mes données sont-elles sécurisées ? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Vos données sont hébergées sur Supabase (infrastructure AWS, région Europe), chiffrées en transit et au repos. Nous ne partageons jamais vos données avec des tiers.</div>
+    </div>
+    <div class="faq-item" onclick="toggle(this)">
+      <div class="faq-q">Quelle est la politique d'annulation ? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Vous pouvez annuler à tout moment depuis votre espace client Stripe. L'accès reste actif jusqu'à la fin de la période en cours. Aucun frais d'annulation.</div>
+    </div>
+    <div class="faq-item" onclick="toggle(this)">
+      <div class="faq-q">Existe-t-il des remises pour les associations ou groupements ? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Oui. Contactez-nous à <a href="mailto:thibaudcucinotta@demereenfilsmdb.fr" style="color:#3ecf8e;">thibaudcucinotta@demereenfilsmdb.fr</a> pour un devis personnalisé.</div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>© 2026 Gestop — <a href="/cgu.html" style="color:rgba(255,255,255,.4);">CGU</a> · <a href="/contact.html" style="color:rgba(255,255,255,.4);">Contact</a></p>
+</footer>
+
+<script>
+const PRICE_IDS = {
+  solo: { monthly: 'price_1UChzD7GQSlXQaWSHn6b2MP0', annual: 'price_1UChzI7GQSlXQaWSdnC8pKEk' },
+  pro: { monthly: 'price_1UChzz7GQSlXQaWSqX8yvhHn', annual: 'price_1UCi0H7GQSlXQaWSan5bWfbj' },
+  cabinet: { monthly: 'price_1UCi0V7GQSlXQaWS0WpI34u2', annual: 'price_1UCi0x7GQSlXQaWSgQC77tu8' },
+};
+
+const PRICES = {
+  solo: { monthly: 49, annual: 39 },
+  pro: { monthly: 99, annual: 79 },
+  cabinet: { monthly: 249, annual: 199 },
+};
+
+let billing = 'monthly';
+
+function setBilling(b) {
+  billing = b;
+  document.getElementById('btn-monthly').classList.toggle('active', b === 'monthly');
+  document.getElementById('btn-annual').classList.toggle('active', b === 'annual');
+  
+  ['solo', 'pro', 'cabinet'].forEach(plan => {
+    const price = PRICES[plan][b];
+    const suffix = b === 'monthly' ? '€/mois' : '€/mois';
+    document.getElementById('price-' + plan).innerHTML = price + '<span>' + suffix + '</span>';
+    document.getElementById('annual-' + plan).textContent = b === 'annual' 
+      ? 'Facturé ' + (price * 12) + '€/an — économisez ' + ((PRICES[plan].monthly - price) * 12) + '€'
+      : '';
+  });
+}
+
+async function checkout(plan) {
+  const priceId = PRICE_IDS[plan][billing];
+  const btn = event.target;
+  btn.textContent = 'Chargement...';
+  btn.disabled = true;
+  
+  try {
+    const res = await fetch('https://mdb-simulateur-tau.vercel.app/api/create-checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ priceId, plan, billing })
+    });
+    const data = await res.json();
+    if (data.url) {
+      window.location.href = data.url;
+    } else {
+      throw new Error(data.error || 'Erreur');
+    }
+  } catch(e) {
+    alert('Erreur: ' + e.message);
+    btn.textContent = 'Commencer l\'essai →';
+    btn.disabled = false;
+  }
+}
+
+function toggle(el) {
+  el.classList.toggle('open');
+}
+</script>
+</body>
+</html>
