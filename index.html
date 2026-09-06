@@ -18,6 +18,8 @@
 <meta property="og:title" content="Gestop — Le logiciel des marchands de biens">
 <meta property="og:description" content="Fini Excel. Pilotez chaque operation comme un marchand pro. Simulation financiere, analyse DVF, tresorerie, securisation.">
 <meta property="og:image" content="https://gestop.fr/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:site_name" content="Gestop">
 
@@ -1310,6 +1312,12 @@ document.querySelectorAll('a,button,.faq-q,.feature-card,.testi,.p-card').forEac
 // Nav scroll
 
 // Scroll reveal
+// Sur mobile : tout visible immédiatement
+if(window.matchMedia('(hover:none),(pointer:coarse)').matches){
+  document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>{
+    el.classList.add('visible');
+  });
+}
 const observer=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(e.isIntersecting){
@@ -1344,7 +1352,9 @@ const observer=new IntersectionObserver(entries=>{
     }
   });
 },{threshold:0.15});
+if(!window.matchMedia('(hover:none),(pointer:coarse)').matches){
 document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>observer.observe(el));
+}
 
 // FAQ
 function toggleFaq(el){
