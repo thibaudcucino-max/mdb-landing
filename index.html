@@ -781,7 +781,10 @@ html{overflow-x:hidden;}
     <a href="#tarifs">Tarifs</a>
     <a href="#faq">FAQ</a>
   </div>
-  <a href="https://mdb-simulateur-tau.vercel.app/?demo=1" target="_blank" class="nav-demo" style="margin-right:8px;padding:8px 16px;border-radius:8px;font-size:13px;font-weight:600;color:#3ecf8e;border:1px solid rgba(62,207,142,0.3);text-decoration:none;">Démo</a><a href="#inscription" class="nav-cta">Accès anticipé →</a>
+  <div id="nav-actions" style="display:flex;align-items:center;gap:8px;transition:opacity .25s,transform .25s;">
+    <a href="https://mdb-simulateur-tau.vercel.app/?demo=1" target="_blank" class="nav-demo" style="padding:8px 16px;border-radius:8px;font-size:13px;font-weight:600;color:#3ecf8e;border:1px solid rgba(62,207,142,0.3);text-decoration:none;">Démo</a>
+    <a href="#inscription" class="nav-cta">Accès anticipé →</a>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -1348,6 +1351,22 @@ async function inscrire(){
 </script>
 <script>
 function showScreen(name,btn){document.querySelectorAll('.screen-content').forEach(el=>el.classList.add('hidden'));document.querySelectorAll('.screen-tab').forEach(el=>el.classList.remove('active'));document.getElementById('screen-'+name).classList.remove('hidden');btn.classList.add('active');}
+// Nav actions disparaissent au scroll
+(function(){
+  const actions = document.getElementById('nav-actions');
+  if(!actions) return;
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 80){
+      actions.style.opacity='0';
+      actions.style.pointerEvents='none';
+      actions.style.transform='translateY(-6px)';
+    } else {
+      actions.style.opacity='1';
+      actions.style.pointerEvents='auto';
+      actions.style.transform='translateY(0)';
+    }
+  }, {passive:true});
+})();
 </script>
 </body>
 </html>
