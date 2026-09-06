@@ -125,7 +125,7 @@ async function envoyer() {
   btn.textContent = 'Envoi en cours...';
 
   try {
-    const res = await fetch('/api/contact', {
+    const res = await fetch('https://mdb-simulateur-tau.vercel.app/api/contact', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ nom, email, sujet, message })
