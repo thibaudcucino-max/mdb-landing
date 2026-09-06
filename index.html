@@ -1266,7 +1266,7 @@ document.addEventListener('mousemove',e=>{
 });
 (function animCursor(){
   const dx=mx-cx,dy=my-cy,dist=Math.sqrt(dx*dx+dy*dy);
-  const speed=Math.min(0.35,0.18+dist*0.003);
+  const speed=Math.min(0.75,0.45+dist*0.006);
   cx+=dx*speed;cy+=dy*speed;
   cursor.style.transform='translate3d('+(cx-5)+'px,'+(cy-5)+'px,0)';
   requestAnimationFrame(animCursor);
