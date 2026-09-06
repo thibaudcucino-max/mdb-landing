@@ -745,6 +745,25 @@ footer p{font-size:13px;color:rgba(255,255,255,0.2);}
   body{cursor:auto;}
 }
 html{overflow-x:hidden;}
+
+/* ── Features grid ── */
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.feature-card{display:flex;flex-direction:column;gap:10px;padding:20px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);text-decoration:none;transition:all .2s;cursor:pointer;}
+.feature-card:hover{background:rgba(255,255,255,.08);border-color:rgba(62,207,142,.3);transform:translateY(-2px);}
+.feature-card--hero{grid-column:span 3;flex-direction:row;align-items:center;background:rgba(62,207,142,.06);border-color:rgba(62,207,142,.2);}
+.feature-card--hero:hover{background:rgba(62,207,142,.1);}
+.feature-card__icon{font-size:28px;flex-shrink:0;}
+.feature-card--hero .feature-card__icon{font-size:36px;}
+.feature-card__content{flex:1;}
+.feature-card__name{font-size:15px;font-weight:700;color:#fff;margin-bottom:4px;}
+.feature-card--hero .feature-card__name{font-size:18px;}
+.feature-card__desc{font-size:12px;color:rgba(255,255,255,.5);line-height:1.6;}
+.feature-card--hero .feature-card__desc{font-size:13px;}
+.feature-card__cta{font-size:13px;font-weight:600;color:#3ecf8e;white-space:nowrap;}
+@media(max-width:768px){
+  .features-grid{grid-template-columns:1fr;}
+  .feature-card--hero{grid-column:span 1;flex-direction:column;}
+}
 </style>
 </head>
 <body>
@@ -985,249 +1004,120 @@ html{overflow-x:hidden;}
 </section>
 
 <!-- SCREENSHOTS -->
-<section class="section" style="padding:80px 0;">
+<section class="section" style="padding:80px 0;" id="fonctionnalites">
   <div class="s-inner">
     <div class="s-tag reveal">Le simulateur en action</div>
     <h2 class="s-title reveal">Tout ce dont vous avez besoin,<br>au même endroit.</h2>
-    <div class="screens-tabs reveal">
-      <button class="screen-tab active" onclick="showScreen('dashboard',this)">Tableau de bord</button>
-      <button class="screen-tab" onclick="showScreen('operations',this)">Opérations</button>
-      <button class="screen-tab" onclick="showScreen('dvf',this)">Analyse DVF</button>
-      <button class="screen-tab" onclick="showScreen('securisation',this)">Sécurisation</button>
-      <button class="screen-tab" onclick="showScreen('tresorerie',this)">Trésorerie</button>
+    <p class="s-sub reveal" style="text-align:center;max-width:560px;margin:0 auto 48px;color:rgba(255,255,255,.55);font-size:16px;line-height:1.7;">
+      Gestop couvre l'intégralité du cycle de vie d'une opération — de la recherche à la revente.
+    </p>
+
+    <!-- Grille des onglets/fonctionnalités -->
+    <div class="features-grid reveal">
+      <a href="https://mdb-simulateur-tau.vercel.app/?demo=1" target="_blank" class="feature-card feature-card--hero">
+        <div class="feature-card__icon">📊</div>
+        <div class="feature-card__content">
+          <div class="feature-card__name">Tableau de bord</div>
+          <div class="feature-card__desc">Vue d'ensemble de tout votre portefeuille : CA prévisionnel, marge cumulée, exposition par financeur, prochaines échéances.</div>
+        </div>
+        <div class="feature-card__cta">Voir la démo →</div>
+      </a>
+
+      <a href="https://mdb-simulateur-tau.vercel.app/?demo=1" target="_blank" class="feature-card">
+        <div class="feature-card__icon">📁</div>
+        <div class="feature-card__content">
+          <div class="feature-card__name">Mes opérations</div>
+          <div class="feature-card__desc">Gérez chaque bien de l'achat à la revente avec tous ses onglets dédiés.</div>
+        </div>
+      </a>
+
+      <a href="https://mdb-simulateur-tau.vercel.app/?demo=1" target="_blank" class="feature-card">
+        <div class="feature-card__icon">🧮</div>
+        <div class="feature-card__content">
+          <div class="feature-card__name">Simulations</div>
+          <div class="feature-card__desc">Calculez votre marge nette, rentabilité et besoin en fonds propres selon différents scénarios de prix et de financement.</div>
+        </div>
+      </a>
+
+      <a href="https://mdb-simulateur-tau.vercel.app/?demo=1" target="_blank" class="feature-card">
+        <div class="feature-card__icon">🔨</div>
+        <div class="feature-card__content">
+          <div class="feature-card__name">Devis travaux</div>
+          <div class="feature-card__desc">Importez vos PDF de devis, suivez l'avancement lot par lot et contrôlez les paiements entreprises.</div>
+        </div>
+      </a>
+
+      <a href="https://mdb-simulateur-tau.vercel.app/?demo=1" target="_blank" class="feature-card">
+        <div class="feature-card__icon">📍</div>
+        <div class="feature-card__content">
+          <div class="feature-card__name">Analyse DVF</div>
+          <div class="feature-card__desc">Consultez les ventes notariales réelles autour de votre bien pour estimer votre prix de sortie avec les données officielles de l'État.</div>
+        </div>
+      </a>
+
+      <a href="https://mdb-simulateur-tau.vercel.app/?demo=1" target="_blank" class="feature-card">
+        <div class="feature-card__icon">💰</div>
+        <div class="feature-card__content">
+          <div class="feature-card__name">Trésorerie</div>
+          <div class="feature-card__desc">Prévisionnel consolidé sur 24 mois : encaissements, décaissements, point bas et horizon de sortie.</div>
+        </div>
+      </a>
+
+      <a href="https://mdb-simulateur-tau.vercel.app/?demo=1" target="_blank" class="feature-card">
+        <div class="feature-card__icon">📅</div>
+        <div class="feature-card__content">
+          <div class="feature-card__name">Calendrier</div>
+          <div class="feature-card__desc">Toutes vos échéances en un coup d'œil — compromis, travaux, signatures, mise en vente — avec alertes de retard.</div>
+        </div>
+      </a>
+
+      <a href="https://mdb-simulateur-tau.vercel.app/?demo=1" target="_blank" class="feature-card">
+        <div class="feature-card__icon">🛡️</div>
+        <div class="feature-card__content">
+          <div class="feature-card__name">Sécurisation</div>
+          <div class="feature-card__desc">Matrice globale de suivi — compromis, conditions, financement, acte, travaux, commercialisation — pour chaque opération.</div>
+        </div>
+      </a>
+
+      <a href="https://mdb-simulateur-tau.vercel.app/?demo=1" target="_blank" class="feature-card">
+        <div class="feature-card__icon">🏗️</div>
+        <div class="feature-card__content">
+          <div class="feature-card__name">Commercialisation</div>
+          <div class="feature-card__desc">Suivez vos lots à la vente, les acquéreurs potentiels et générez vos vitrines en ligne.</div>
+        </div>
+      </a>
+
+      <a href="https://mdb-simulateur-tau.vercel.app/?demo=1" target="_blank" class="feature-card">
+        <div class="feature-card__icon">🔍</div>
+        <div class="feature-card__content">
+          <div class="feature-card__name">Sourcing</div>
+          <div class="feature-card__desc">Importez vos annonces CSV depuis les portails immo et analysez les opportunités directement dans l'outil.</div>
+        </div>
+      </a>
+
+      <a href="https://mdb-simulateur-tau.vercel.app/?demo=1" target="_blank" class="feature-card">
+        <div class="feature-card__icon">📄</div>
+        <div class="feature-card__content">
+          <div class="feature-card__name">Export financeur</div>
+          <div class="feature-card__desc">Générez en un clic un dossier PDF complet pour vos financeurs : simulation, DVF, devis, plan de financement.</div>
+        </div>
+      </a>
+
+      <a href="https://mdb-simulateur-tau.vercel.app/?demo=1" target="_blank" class="feature-card">
+        <div class="feature-card__icon">⚖️</div>
+        <div class="feature-card__content">
+          <div class="feature-card__name">Comparateur</div>
+          <div class="feature-card__desc">Comparez plusieurs simulations côte à côte pour choisir le meilleur scénario de revente ou de découpe.</div>
+        </div>
+      </a>
     </div>
-    <div class="screen-frame reveal">
-      <div class="browser-bar">
-        <div class="browser-dots"><span></span><span></span><span></span></div>
-        <div class="browser-url">mdb-simulateur-tau.vercel.app</div>
-      </div>
 
-      <!-- TABLEAU DE BORD -->
-      <div class="screen-content" id="screen-dashboard">
-        <div class="mock-app">
-          <div class="mock-nav">
-            <div class="mock-nav-logo">GESTOP</div>
-            <div class="mock-nav-item mock-active">📊 Tableau de bord</div>
-            <div class="mock-nav-item">📁 Mes opérations</div>
-            <div class="mock-nav-item">📈 Analyse DVF</div>
-            <div class="mock-nav-item">🔍 Sourcing</div>
-            <div class="mock-nav-item">👥 Contacts</div>
-            <div class="mock-nav-item">🏢 Commercialisation</div>
-            <div class="mock-nav-item">💰 Trésorerie</div>
-            <div class="mock-nav-item">📅 Calendrier</div>
-            <div class="mock-nav-item">🛡 Sécurisation</div>
-          </div>
-          <div class="mock-body">
-            <div class="mock-topbar">SAS DE MERE EN FILS MDB</div>
-            <div class="mock-page-title">Tableau de bord MDB <span class="mock-sub-title">SAS De Mère en Fils MDB</span></div>
-            <div class="mock-section-title">Portefeuille <span style="float:right;font-weight:400;font-size:11px;color:#8B9BAD">3 opérations chiffrées</span></div>
-            <div class="mock-kpi-row">
-              <div class="mock-kpi-card"><div class="mock-kpi-lbl">Chiffre d'affaires attendu</div><div class="mock-kpi-val gold">3 991 000,00 €</div></div>
-              <div class="mock-kpi-card"><div class="mock-kpi-lbl">Marge nette cumulée</div><div class="mock-kpi-val gold">696 976,22 €</div><div class="mock-kpi-sub">☐ Après IS</div></div>
-              <div class="mock-kpi-card"><div class="mock-kpi-lbl">Rentabilité d'ensemble</div><div class="mock-kpi-val gold">21,16 %</div></div>
-              <div class="mock-kpi-card"><div class="mock-kpi-lbl">Coût de revient</div><div class="mock-kpi-val">3 294 023,78 €</div></div>
-              <div class="mock-kpi-card"><div class="mock-kpi-lbl">Solde bancaire réel</div><div class="mock-kpi-val teal">92 418,55 €</div></div>
-            </div>
-            <div class="mock-two-col">
-              <div class="mock-card">
-                <div class="mock-card-title">Capitaux engagés</div>
-                <div class="mock-data-row"><span>Dette levée</span><span>2 937 077,53 €</span></div>
-                <div class="mock-data-row"><span>Fonds propres à mobiliser</span><span>156 170,83 €</span></div>
-                <div class="mock-data-row"><span>Coût du financement</span><span>469 105,46 €</span></div>
-              </div>
-              <div class="mock-card">
-                <div class="mock-card-title">Exposition par financeur</div>
-                <div class="mock-data-row"><span>Amani</span><span class="gold">1 082 862,31 €</span><div class="mock-bar" style="width:80%"></div></div>
-                <div class="mock-data-row"><span>Look&amp;fin</span><span class="gold">865 000,00 €</span><div class="mock-bar" style="width:64%"></div></div>
-                <div class="mock-data-row"><span>La Première Brique</span><span class="gold">628 000,00 €</span><div class="mock-bar" style="width:47%"></div></div>
-                <div class="mock-data-row"><span>Membres du cercle</span><span class="gold">361 215,22 €</span><div class="mock-bar" style="width:27%"></div></div>
-              </div>
-              <div class="mock-card">
-                <div class="mock-card-title">Répartition par phase</div>
-                <div class="mock-data-row"><span class="dot-green">●</span><span>En commercialisation</span><span>3</span></div>
-              </div>
-            </div>
-            <div class="mock-echéances-title">⚡ Prochaines échéances</div>
-            <div class="mock-ech-row"><span class="mock-ech-date">07/09/2026</span><span class="mock-ech-op tag-blue">Rue de la Marne</span><span class="mock-ech-type tag-avan">Avancement</span><span>Travaux — démarrage</span></div>
-            <div class="mock-ech-row"><span class="mock-ech-date">10/10/2026</span><span class="mock-ech-op tag-purple">Baratte Cholet</span><span class="mock-ech-type tag-avan">Avancement</span><span>Travaux — achèvement</span></div>
-            <div class="mock-ech-row"><span class="mock-ech-date">31/10/2026</span><span class="mock-ech-op tag-orange">Montreuil</span><span class="mock-ech-type tag-secu">Sécurisation</span><span>Signature de l'acte</span></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- OPÉRATIONS / DEVIS -->
-      <div class="screen-content hidden" id="screen-operations">
-        <div class="mock-app">
-          <div class="mock-nav">
-            <div class="mock-nav-logo">GESTOP</div>
-            <div class="mock-nav-item">📊 Tableau de bord</div>
-            <div class="mock-nav-item mock-active">📁 Mes opérations</div>
-            <div class="mock-nav-item">📈 Analyse DVF</div>
-            <div class="mock-nav-item">🔍 Sourcing</div>
-            <div class="mock-nav-item">💰 Trésorerie</div>
-          </div>
-          <div class="mock-body">
-            <div class="mock-topbar">SAS DE MERE EN FILS MDB</div>
-            <div class="mock-breadcrumb">← Opérations / <b>Baratte Cholet</b> ✏</div>
-            <div class="mock-op-header">
-              <div class="mock-op-title">63 Rue Baratte Cholet 94100 Saint-Maur-des-Fossés</div>
-              <div class="mock-op-badge">SAS DE MÈRE EN FILS MDB ▾</div>
-            </div>
-            <div class="mock-tabs-bar">
-              <span class="mock-tab">Présentation</span><span class="mock-tab">Simulations</span><span class="mock-tab">Urbanisme</span><span class="mock-tab mock-tab-active">Devis travaux</span><span class="mock-tab">Commercialisation</span><span class="mock-tab">Trésorerie</span><span class="mock-tab">Liaison bancaire</span>
-            </div>
-            <div class="mock-devis-kpis">
-              <div class="mock-devis-kpi"><div class="mock-kpi-lbl">Devis HT retenu</div><div class="mock-kpi-val">59 031,46 €</div></div>
-              <div class="mock-devis-kpi"><div class="mock-kpi-lbl">TVA</div><div class="mock-kpi-val">5 903,15 €</div></div>
-              <div class="mock-devis-kpi"><div class="mock-kpi-lbl">Devis TTC</div><div class="mock-kpi-val">64 934,61 €</div></div>
-              <div class="mock-devis-kpi"><div class="mock-kpi-lbl">Budget sécurisé TTC</div><div class="mock-kpi-val gold">70 478,13 €</div></div>
-              <div class="mock-devis-kpi"><div class="mock-kpi-lbl">Total payé</div><div class="mock-kpi-val">31 941,23 €</div></div>
-              <div class="mock-devis-kpi"><div class="mock-kpi-lbl">Reste à payer</div><div class="mock-kpi-val red">38 536,90 €</div></div>
-              <div class="mock-devis-kpi"><div class="mock-kpi-lbl">Avancement travaux</div><div class="mock-kpi-val">5,1 %</div></div>
-              <div class="mock-devis-kpi"><div class="mock-kpi-lbl">Avancement paiements</div><div class="mock-kpi-val">45,3 %</div></div>
-            </div>
-            <div class="mock-devis-section">1.0 Installation de chantier — Nettoyage <span class="mock-devis-count">3/3 prestations</span><span class="mock-devis-total">1 469,72 € HT</span></div>
-            <div class="mock-devis-section open">2.0 Démolition <span class="mock-devis-count">7/12 prestations</span><span class="mock-devis-total">2 008,80 € HT</span></div>
-            <div class="mock-devis-table">
-              <div class="mock-devis-th"><span>N°</span><span style="flex:3">Prestation</span><span>Qté</span><span>PU</span><span>Montant HT</span><span>Avancement</span></div>
-              <div class="mock-devis-tr checked"><span>2.1</span><span style="flex:3">Dépose de faux-plafonds sans isolant</span><span>15.99 m²</span><span>5 €</span><span>79,95 €</span><span class="tag-green">Terminé</span></div>
-              <div class="mock-devis-tr checked"><span>2.2</span><span style="flex:3">Dépose de radiateur à eau</span><span>3 u</span><span>59,8 €</span><span>179,40 €</span><span class="tag-green">Terminé</span></div>
-              <div class="mock-devis-tr"><span>2.3</span><span style="flex:3; text-decoration:line-through;color:#aaa">Dépose de carrelage au sol</span><span>6.59 m²</span><span>26 €</span><span>171,34 €</span><span class="tag-gray">Non commencé</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- DVF -->
-      <div class="screen-content hidden" id="screen-dvf">
-        <div class="mock-app">
-          <div class="mock-nav">
-            <div class="mock-nav-logo">GESTOP</div>
-            <div class="mock-nav-item">📊 Tableau de bord</div>
-            <div class="mock-nav-item">📁 Mes opérations</div>
-            <div class="mock-nav-item mock-active">📈 Analyse DVF</div>
-            <div class="mock-nav-item">🔍 Sourcing</div>
-          </div>
-          <div class="mock-body">
-            <div class="mock-topbar">SAS DE MERE EN FILS MDB</div>
-            <div class="mock-dvf-layout">
-              <div class="mock-dvf-left">
-                <div class="mock-page-title">Analyse DVF</div>
-                <div class="mock-dvf-input-label">📍 Adresse du bien</div>
-                <div class="mock-dvf-input">63 Rue Baratte Cholet 94100 Saint-Maur-des-Fossés</div>
-                <div class="mock-dvf-check">✓ Localisé : 63 Rue Baratte Cholet 94100 Saint-Maur-des-Fossés</div>
-                <div class="mock-dvf-section-title">🏠 Caractéristiques</div>
-                <div class="mock-dvf-types"><span class="mock-type-btn">Appartement</span><span class="mock-type-btn active">Maison</span></div>
-                <div class="mock-dvf-section-title">🔍 Paramètres DVF</div>
-                <div class="mock-dvf-param">Rayon : 500 m</div>
-                <div class="mock-dvf-years"><span class="mock-year active">2025</span><span class="mock-year active">2024</span><span class="mock-year">2023</span></div>
-              </div>
-              <div class="mock-dvf-right">
-                <div class="mock-dvf-stats-row">
-                  <div class="mock-dvf-stat"><div class="mock-kpi-lbl">Mutations totales</div><div class="mock-kpi-val">16</div></div>
-                  <div class="mock-dvf-stat"><div class="mock-kpi-lbl">Prix moyen</div><div class="mock-kpi-val">442 178 €</div></div>
-                  <div class="mock-dvf-stat"><div class="mock-kpi-lbl">Prix m² moyen</div><div class="mock-kpi-val">8 686 €/m²</div></div>
-                  <div class="mock-dvf-stat mock-dvf-stat-hl"><div class="mock-kpi-lbl">Prix m² médian</div><div class="mock-kpi-val gold">8 362 €/m²</div></div>
-                  <div class="mock-dvf-stat"><div class="mock-kpi-lbl">Surface moyenne</div><div class="mock-kpi-val">53 m²</div></div>
-                </div>
-                <div class="mock-map-placeholder">
-                  <div class="mock-map-inner">
-                    <div class="mock-map-circle"></div>
-                    <div class="mock-map-dot" style="top:35%;left:52%"></div>
-                    <div class="mock-map-dot green" style="top:42%;left:61%"></div>
-                    <div class="mock-map-dot green" style="top:55%;left:48%"></div>
-                    <div class="mock-map-dot red" style="top:38%;left:44%"></div>
-                    <div class="mock-map-dot green" style="top:60%;left:58%"></div>
-                    <div class="mock-map-dot green" style="top:48%;left:38%"></div>
-                    <div class="mock-map-label">Carte des ventes · 16 géolocalisées</div>
-                  </div>
-                </div>
-                <div class="mock-dvf-table-title">16 ventes comparables</div>
-                <div class="mock-dvf-tbl">
-                  <div class="mock-dvf-th"><span>Date</span><span>Type</span><span>Surface</span><span>Pièces</span><span>Prix</span><span>€/m²</span></div>
-                  <div class="mock-dvf-tr"><span>2025-10</span><span>Maison</span><span>60 m²</span><span>3</span><span>553 000 €</span><span class="gold">9 217 €</span></div>
-                  <div class="mock-dvf-tr"><span>2024-07</span><span>Maison</span><span>55 m²</span><span>4</span><span>472 000 €</span><span class="gold">8 582 €</span></div>
-                  <div class="mock-dvf-tr"><span>2024-03</span><span>Maison</span><span>48 m²</span><span>3</span><span>391 000 €</span><span class="gold">8 146 €</span></div>
-                  <div class="mock-dvf-tr"><span>2024-01</span><span>Maison</span><span>72 m²</span><span>4</span><span>589 000 €</span><span class="gold">8 181 €</span></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- SÉCURISATION -->
-      <div class="screen-content hidden" id="screen-securisation">
-        <div class="mock-app">
-          <div class="mock-nav">
-            <div class="mock-nav-logo">GESTOP</div>
-            <div class="mock-nav-item">📊 Tableau de bord</div>
-            <div class="mock-nav-item">📁 Mes opérations</div>
-            <div class="mock-nav-item">📈 Analyse DVF</div>
-            <div class="mock-nav-item mock-active">🛡 Sécurisation</div>
-          </div>
-          <div class="mock-body">
-            <div class="mock-topbar">SAS DE MERE EN FILS MDB</div>
-            <div class="mock-page-title">Suivi sécurisation <span class="mock-sub-title">Vue globale de toutes les opérations</span></div>
-            <div class="mock-secu-table">
-              <div class="mock-secu-head">
-                <div class="mock-secu-op">OPÉRATION</div>
-                <div class="mock-secu-group">SÉCURISATION<div class="mock-secu-cols"><span>Compromis</span><span>Conditions</span><span>Financement</span><span>Devis</span><span>Urbanisme</span><span>Acte</span></div></div>
-                <div class="mock-secu-group">RÉALISATION<div class="mock-secu-cols"><span>Travaux</span><span>Commercia.</span></div></div>
-                <div class="mock-secu-group">SORTIE<div class="mock-secu-cols"><span>Mise vente</span><span>Revente</span></div></div>
-                <div class="mock-secu-group">INDICATEURS<div class="mock-secu-cols"><span>Simulation</span><span>Financement</span><span>% Travaux</span></div></div>
-              </div>
-              <div class="mock-secu-row"><div class="mock-secu-opname">Baratte Cholet<span>En cours</span></div><div class="mock-secu-checks"><span class="ck ok">✓</span><span class="ck ok">✓</span><span class="ck ok">✓</span><span class="ck ok">✓</span><span class="ck ok">✓</span><span class="ck ok">✓</span></div><div class="mock-secu-checks"><span class="ck ko">✗</span><span class="ck ko">✗</span></div><div class="mock-secu-checks"><span class="ck ko">✗</span><span class="ck ko">✗</span></div><div class="mock-secu-checks"><span class="ck ok">✓</span><span class="ck ok">✓</span><span>9%</span></div></div>
-              <div class="mock-secu-row"><div class="mock-secu-opname">Rue du Havre<span>En commercialisation</span></div><div class="mock-secu-checks"><span class="ck ok">✓</span><span class="ck ok">✓</span><span class="ck ok">✓</span><span class="ck ok">✓</span><span class="ck ok">✓</span><span class="ck ok">✓</span></div><div class="mock-secu-checks"><span class="ck ko">✗</span><span class="ck ko">✗</span></div><div class="mock-secu-checks"><span class="ck ko">✗</span><span class="ck ko">✗</span></div><div class="mock-secu-checks"><span class="ck ok">✓</span><span class="ck ok">✓</span><span>0%</span></div></div>
-              <div class="mock-secu-row"><div class="mock-secu-opname">Rue de la Marne<span>En cours</span></div><div class="mock-secu-checks"><span class="ck ok">✓</span><span class="ck ok">✓</span><span class="ck ok">✓</span><span class="ck ko">✗</span><span class="ck ok">✓</span><span class="ck ok">✓</span></div><div class="mock-secu-checks"><span class="ck ko">✗</span><span class="ck ko">✗</span></div><div class="mock-secu-checks"><span class="ck ko">✗</span><span class="ck ko">✗</span></div><div class="mock-secu-checks"><span class="ck ok">✓</span><span class="ck ok">✓</span><span>—</span></div></div>
-              <div class="mock-secu-row"><div class="mock-secu-opname">Rue Nast<span>Sous promesse</span></div><div class="mock-secu-checks"><span class="ck ok">✓</span><span class="ck ko">✗</span><span class="ck ko">✗</span><span class="ck ko">✗</span><span class="ck ko">✗</span><span class="ck ko">✗</span></div><div class="mock-secu-checks"><span class="ck ko">✗</span><span class="ck ko">✗</span></div><div class="mock-secu-checks"><span class="ck ko">✗</span><span class="ck ko">✗</span></div><div class="mock-secu-checks"><span class="ck ok">✓</span><span class="ck ok">✓</span><span>—</span></div></div>
-              <div class="mock-secu-row"><div class="mock-secu-opname">Montreuil<span>En cours</span></div><div class="mock-secu-checks"><span class="ck ok">✓</span><span class="ck ko">✗</span><span class="ck ko">✗</span><span class="ck ko">✗</span><span class="ck ko">✗</span><span class="ck ko">✗</span></div><div class="mock-secu-checks"><span class="ck ko">✗</span><span class="ck ko">✗</span></div><div class="mock-secu-checks"><span class="ck ko">✗</span><span class="ck ko">✗</span></div><div class="mock-secu-checks"><span class="ck ok">✓</span><span class="ck ok">✓</span><span>—</span></div></div>
-            </div>
-            <div class="mock-secu-legend"><span class="ck ok">✓</span> Terminé / Sans objet &nbsp;&nbsp; <span class="ck ko">✗</span> À faire / Bloqué</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- TRÉSORERIE -->
-      <div class="screen-content hidden" id="screen-tresorerie">
-        <div class="mock-app">
-          <div class="mock-nav">
-            <div class="mock-nav-logo">GESTOP</div>
-            <div class="mock-nav-item">📊 Tableau de bord</div>
-            <div class="mock-nav-item">📁 Mes opérations</div>
-            <div class="mock-nav-item mock-active">💰 Trésorerie</div>
-          </div>
-          <div class="mock-body">
-            <div class="mock-topbar">SAS DE MERE EN FILS MDB</div>
-            <div class="mock-page-title">Trésorerie de toutes les opérations</div>
-            <div class="mock-kpi-row" style="margin-bottom:12px">
-              <div class="mock-kpi-card"><div class="mock-kpi-lbl">Apport maximal consolidé</div><div class="mock-kpi-val red">33 508,07 €</div></div>
-              <div class="mock-kpi-card"><div class="mock-kpi-lbl">Point bas atteint en</div><div class="mock-kpi-val red">Nov. 26</div></div>
-              <div class="mock-kpi-card"><div class="mock-kpi-lbl">Résultat cumulé</div><div class="mock-kpi-val gold">597 646,96 €</div></div>
-              <div class="mock-kpi-card"><div class="mock-kpi-lbl">Horizon</div><div class="mock-kpi-val teal">Juin 26 → Oct. 27</div></div>
-            </div>
-            <div class="mock-treso-chart">
-              <div class="mock-chart-title">📊 Prévisionnel de trésorerie <span style="font-size:10px;font-weight:400;color:#8B9BAD">12 mois · Encaissements / Décaissements / Cumul</span></div>
-              <div class="mock-bars">
-                <div class="mock-bar-group"><div class="mock-bar-enc" style="height:60px"></div><div class="mock-bar-dec" style="height:45px"></div><div class="mock-bar-lbl">Jun 26</div></div>
-                <div class="mock-bar-group"><div class="mock-bar-enc" style="height:90px"></div><div class="mock-bar-dec" style="height:70px"></div><div class="mock-bar-lbl">Jul 26</div></div>
-                <div class="mock-bar-group"><div class="mock-bar-dec" style="height:55px;margin-top:auto"></div><div class="mock-bar-lbl">Aoû 26</div></div>
-                <div class="mock-bar-group"><div class="mock-bar-dec" style="height:40px;margin-top:auto"></div><div class="mock-bar-lbl">Sep 26</div></div>
-                <div class="mock-bar-group"><div class="mock-bar-dec" style="height:65px;margin-top:auto"></div><div class="mock-bar-lbl">Oct 26</div></div>
-                <div class="mock-bar-group"><div class="mock-bar-dec" style="height:50px;margin-top:auto"></div><div class="mock-bar-lbl">Nov 26</div></div>
-                <div class="mock-bar-group"><div class="mock-bar-enc" style="height:30px"></div><div class="mock-bar-lbl">Déc 26</div></div>
-                <div class="mock-bar-group"><div class="mock-bar-enc" style="height:80px"></div><div class="mock-bar-dec" style="height:20px"></div><div class="mock-bar-lbl">Jan 27</div></div>
-                <div class="mock-bar-group"><div class="mock-bar-enc" style="height:100px"></div><div class="mock-bar-dec" style="height:15px"></div><div class="mock-bar-lbl">Fév 27</div></div>
-                <div class="mock-bar-group"><div class="mock-bar-enc" style="height:20px"></div><div class="mock-bar-lbl">Mar 27</div></div>
-                <div class="mock-bar-group"><div class="mock-bar-enc" style="height:110px"></div><div class="mock-bar-lbl">Avr 27</div></div>
-              </div>
-              <div class="mock-chart-footer"><span>Total encaissements <b>3 878 886 €</b></span><span>Total décaissements <b>3 013 842 €</b></span><span>Solde net <b>865 043 €</b></span><span>Point bas <b style="color:#ef4444">-33 508 € en Nov. 26</b></span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- /screen-frame -->
+    <div style="text-align:center;margin-top:48px;" class="reveal">
+      <a href="https://mdb-simulateur-tau.vercel.app/?demo=1" target="_blank"
+        style="display:inline-flex;align-items:center;gap:10px;padding:16px 36px;border-radius:12px;font-size:15px;font-weight:700;background:var(--green);color:#0D1B2A;text-decoration:none;box-shadow:0 4px 20px rgba(62,207,142,0.3);">
+        👁️ Explorer la démo interactive
+      </a>
+    </div>
   </div>
 </section>
 
