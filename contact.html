@@ -135,16 +135,16 @@ async function envoyer() {
       document.getElementById('form-container').style.display = 'none';
       document.getElementById('success').style.display = 'block';
     } else {
-      err.textContent = data.error || 'Erreur lors de l'envoi.';
+      err.textContent = data.error || "Erreur lors de l'envoi.";
       err.style.display = 'block';
       btn.disabled = false;
-      btn.textContent = 'Envoyer le message →';
+      btn.textContent = "Envoyer le message →";
     }
   } catch(e) {
     err.textContent = 'Erreur réseau. Écrivez-nous directement à thibaudcucinotta@demereenfilsmdb.fr';
     err.style.display = 'block';
     btn.disabled = false;
-    btn.textContent = 'Envoyer le message →';
+    btn.textContent = "Envoyer le message →";
   }
 }
 </script>
