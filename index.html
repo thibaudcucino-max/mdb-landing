@@ -32,7 +32,7 @@ body{
 }
 
 /* CURSOR */
-.cursor{display:none!important;
+.cursor{
   position:fixed;width:10px;height:10px;border-radius:50%;
   background:#3ecf8e;pointer-events:none;z-index:99999;
   top:0;left:0;
@@ -741,7 +741,7 @@ footer p{font-size:13px;color:rgba(255,255,255,0.2);}
   .screen-tab{padding:6px 12px;font-size:11px;}
 }
 @media(hover:none),(pointer:coarse){
-  .cursor{display:none!important;}
+  .cursor{}
   body{cursor:auto;}
 }
 html{overflow-x:hidden;}
