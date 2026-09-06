@@ -37,8 +37,8 @@ export default async function handler(req, res) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: 'Gestop Contact <onboarding@resend.dev>',
-        to: ['thibaudcucino@gmail.com'],
+        from: 'Gestop Contact <contact@gestop.fr>',
+        to: ['thibaudcucinotta@demereenfilsmdb.fr'],
         reply_to: email,
         subject: '[Gestop] ' + (sujets[sujet] || sujet) + ' - ' + nom,
         html,
