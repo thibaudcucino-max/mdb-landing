@@ -802,6 +802,7 @@ html{overflow-x:hidden;}
     <a href="#workflow">Comment ça marche</a>
     <a href="/tarifs.html">Tarifs</a>
     <a href="#faq">FAQ</a>
+    <a href="/contact.html">Contact</a>
   </div>
   <div id="nav-actions" style="display:flex;align-items:center;gap:8px;transition:opacity .25s,transform .25s;">
     <a href="https://mdb-simulateur-tau.vercel.app/?demo=1" target="_blank" class="nav-demo" style="padding:8px 16px;border-radius:8px;font-size:13px;font-weight:600;color:#3ecf8e;border:1px solid rgba(62,207,142,0.3);text-decoration:none;">Démo</a>
@@ -1263,7 +1264,7 @@ document.addEventListener('mousemove',e=>{
 });
 (function animCursor(){
   const dx=mx-cx,dy=my-cy,dist=Math.sqrt(dx*dx+dy*dy);
-  const speed=Math.min(0.75,0.45+dist*0.006);
+  const speed=Math.min(0.92,0.65+dist*0.008);
   cx+=dx*speed;cy+=dy*speed;
   cursor.style.transform='translate3d('+(cx-5)+'px,'+(cy-5)+'px,0)';
   requestAnimationFrame(animCursor);
