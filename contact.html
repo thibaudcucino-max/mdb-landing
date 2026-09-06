@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Gestop</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#F7F6F2;color:#1C2B3A;line-height:1.7;}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 40px;display:flex;align-items:center;justify-content:space-between;background:rgba(13,27,42,.95);backdrop-filter:blur(12px);}
+  .nav-logo{font-size:18px;font-weight:800;color:#fff;text-decoration:none;letter-spacing:-.02em;cursor:pointer;}
+  .nav-logo span{color:#3ecf8e;}
+  .nav-back{font-size:13px;color:rgba(255,255,255,.6);text-decoration:none;}
+  .nav-back:hover{color:#fff;}
+  main{max-width:600px;margin:0 auto;padding:120px 24px 80px;}
+  h1{font-size:32px;font-weight:800;color:#1C2B3A;margin-bottom:8px;}
+  .subtitle{font-size:15px;color:#8B9BAD;margin-bottom:48px;line-height:1.6;}
+  .form-group{margin-bottom:20px;}
+  label{display:block;font-size:12px;font-weight:600;color:#3D5166;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;}
+  input,textarea,select{width:100%;padding:12px 16px;border-radius:10px;border:1px solid #D6D3CC;font-size:14px;font-family:inherit;color:#1C2B3A;background:#fff;outline:none;transition:border-color .2s;}
+  input:focus,textarea:focus,select:focus{border-color:#1C2B3A;}
+  textarea{resize:vertical;min-height:120px;}
+  .btn{width:100%;padding:14px;border-radius:10px;background:#1C2B3A;color:#fff;font-size:15px;font-weight:700;border:none;cursor:pointer;transition:opacity .2s;margin-top:8px;}
+  .btn:hover{opacity:.85;}
+  .btn:disabled{opacity:.5;cursor:default;}
+  .note{font-size:12px;color:#8B9BAD;text-align:center;margin-top:12px;}
+  .success{background:#ECFDF3;border:1px solid #BBF7D0;border-radius:10px;padding:20px;text-align:center;display:none;}
+  .success-icon{font-size:32px;margin-bottom:8px;}
+  .success-title{font-size:16px;font-weight:700;color:#065F46;margin-bottom:4px;}
+  .success-sub{font-size:13px;color:#059669;}
+  .info-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:40px;}
+  .info-card{background:#fff;border:1px solid #E8E6E0;border-radius:12px;padding:20px;}
+  .info-card-icon{font-size:24px;margin-bottom:8px;}
+  .info-card-title{font-size:12px;font-weight:700;color:#8B9BAD;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;}
+  .info-card-val{font-size:14px;color:#1C2B3A;font-weight:500;}
+  .info-card-val a{color:#0E7490;text-decoration:none;}
+  footer{text-align:center;padding:32px;font-size:12px;color:#8B9BAD;}
+  footer a{color:#8B9BAD;text-decoration:none;}
+  @media(max-width:600px){.info-cards{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">Gestop<span>.</span></a>
+  <a href="/" class="nav-back">← Retour à l'accueil</a>
+</nav>
+
+<main>
+  <h1>Nous contacter</h1>
+  <p class="subtitle">Une question sur Gestop, un bug à signaler, ou envie d'en savoir plus sur l'accès anticipé ? Écrivez-nous, on répond sous 24h.</p>
+
+  <div class="info-cards">
+    <div class="info-card">
+      <div class="info-card-icon">📧</div>
+      <div class="info-card-title">Email direct</div>
+      <div class="info-card-val"><a href="mailto:thibaudcucinotta@demereenfilsmdb.fr">thibaudcucinotta@<br>demereenfilsmdb.fr</a></div>
+    </div>
+    <div class="info-card">
+      <div class="info-card-icon">⏱️</div>
+      <div class="info-card-title">Temps de réponse</div>
+      <div class="info-card-val">Sous 24h ouvrées</div>
+    </div>
+  </div>
+
+  <!-- Formulaire -->
+  <div id="form-container">
+    <div class="form-group">
+      <label>Votre nom</label>
+      <input type="text" id="nom" placeholder="Jean Dupont" />
+    </div>
+    <div class="form-group">
+      <label>Votre email</label>
+      <input type="email" id="email" placeholder="jean@exemple.fr" />
+    </div>
+    <div class="form-group">
+      <label>Sujet</label>
+      <select id="sujet">
+        <option value="">-- Choisir un sujet --</option>
+        <option value="demo">Demande de démo</option>
+        <option value="acces">Accès anticipé</option>
+        <option value="bug">Signaler un bug</option>
+        <option value="question">Question sur le produit</option>
+        <option value="tarif">Question sur les tarifs</option>
+        <option value="autre">Autre</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Message</label>
+      <textarea id="message" placeholder="Décrivez votre demande..."></textarea>
+    </div>
+    <p id="err" style="color:#DC2626;font-size:13px;margin-bottom:12px;display:none;"></p>
+    <button class="btn" id="btn-send" onclick="envoyer()">Envoyer le message →</button>
+    <p class="note">Vos données ne sont pas partagées avec des tiers.</p>
+  </div>
+
+  <div class="success" id="success">
+    <div class="success-icon">✅</div>
+    <div class="success-title">Message envoyé !</div>
+    <div class="success-sub">On vous répond sous 24h ouvrées.</div>
+  </div>
+</main>
+
+<footer>
+  <p>© 2026 Gestop — <a href="/cgu.html">CGU & Mentions légales</a> · <a href="mailto:thibaudcucinotta@demereenfilsmdb.fr">Contact</a></p>
+</footer>
+
+<script>
+async function envoyer() {
+  const nom = document.getElementById('nom').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const sujet = document.getElementById('sujet').value;
+  const message = document.getElementById('message').value.trim();
+  const err = document.getElementById('err');
+  const btn = document.getElementById('btn-send');
+
+  err.style.display = 'none';
+
+  if (!nom) { err.textContent = 'Veuillez indiquer votre nom.'; err.style.display='block'; return; }
+  if (!email || !email.includes('@')) { err.textContent = 'Email invalide.'; err.style.display='block'; return; }
+  if (!sujet) { err.textContent = 'Veuillez choisir un sujet.'; err.style.display='block'; return; }
+  if (!message || message.length < 10) { err.textContent = 'Message trop court.'; err.style.display='block'; return; }
+
+  btn.disabled = true;
+  btn.textContent = 'Envoi en cours...';
+
+  try {
+    const res = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ nom, email, sujet, message })
+    });
+    const data = await res.json();
+    if (res.ok) {
+      document.getElementById('form-container').style.display = 'none';
+      document.getElementById('success').style.display = 'block';
+    } else {
+      err.textContent = data.error || 'Erreur lors de l'envoi.';
+      err.style.display = 'block';
+      btn.disabled = false;
+      btn.textContent = 'Envoyer le message →';
+    }
+  } catch(e) {
+    err.textContent = 'Erreur réseau. Écrivez-nous directement à thibaudcucinotta@demereenfilsmdb.fr';
+    err.style.display = 'block';
+    btn.disabled = false;
+    btn.textContent = 'Envoyer le message →';
+  }
+}
+</script>
+</body>
+</html>
